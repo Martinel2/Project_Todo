@@ -1,5 +1,6 @@
 package com.todo.todo.Config;
 
+import com.todo.todo.Service.OAuth2Service;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -17,26 +18,28 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SpringConfig {
 
+    private final OAuth2Service oAuth2Service;
+
+    public SpringConfig(OAuth2Service oAuth2Service) {
+        this.oAuth2Service = oAuth2Service;
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf) -> csrf.disable())
                 .cors(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((requests)->requests
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/json/**").permitAll() // CSS 파일에 대한 접근을 허용
-                        .requestMatchers("/user/**", "/myCoupon", "/products/add", "/cart", "/seller**", "/**Coupon","/pay", "/**Wishlist").authenticated()
-                        .requestMatchers("/admin/**").hasRole("admin")
+                .authorizeHttpRequests((requests) -> requests
                         .anyRequest().permitAll())
                 .exceptionHandling(ex -> ex
                         .accessDeniedPage("/") // 접근 거부 페이지 설정
                 )
-                .formLogin(formLogin -> formLogin
-                        .loginPage("/login")
-                        .loginProcessingUrl("/login-process")
-                        .usernameParameter("loginId")	// [C] submit할 아이디
-                        .passwordParameter("password")
-                        .permitAll()
-                        .defaultSuccessUrl("/") // 성공 시 리다이렉트 URL
-                        .failureUrl("/login?error") // 실패 시 리다이렉트 URL
+                .formLogin(formLogin -> formLogin.disable()
+                )
+                // OAuth2 Login 추가
+                .oauth2Login(oauth2 -> oauth2
+                        .defaultSuccessUrl("/oauth/loginInfo", true) // 로그인 성공시 이동할 URL
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(oAuth2Service)) // 사용자 정보를 처리할 서비스 지정
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
@@ -47,6 +50,7 @@ public class SpringConfig {
                         .logoutUrl("/logout") // 로그아웃
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true));// 세션 무효화
+
 
         return http.build();
     }
