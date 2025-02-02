@@ -29,6 +29,10 @@ function Login({ setToken }) {
         <input type="password" placeholder="비밀번호" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">로그인</button>
       </form>
+      <a href="/oauth2/authorization/google" className="btn btn-sm btn-success active" role="button">Google Login</a><br/>
+      <a href="/oauth2/authorization/naver" className="btn btn-sm btn-success active" role="button">Naver Login</a><br/>
+      <a href="/oauth2/authorization/kakao" className="btn btn-third active" role="button">Kakao Login</a>
+
     </div>
   );
 }
