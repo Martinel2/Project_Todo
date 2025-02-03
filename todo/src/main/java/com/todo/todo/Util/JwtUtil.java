@@ -11,22 +11,40 @@ import java.util.Date;
 public class JwtUtil {
 
     private static final String SECRET_KEY = "mySecretKey";  // 비밀 키
+    private static final long ACCESS_TOKEN_EXPIRATION = 3600 * 1000;  // 액세스 토큰 만료 시간 (1시간)
+    private static final long REFRESH_TOKEN_EXPIRATION = 7 * 24 * 3600 * 1000; // 리프레시 토큰 만료 (7일)
 
-    // JWT 생성
-    public static String createToken(String username) {
-        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY); // 비밀 키로 서명
+    // JWT 액세스 토큰 생성
+    public static String createAccessToken(String username) {
         return JWT.create()
-                .withSubject(username)           // 사용자 이름
-                .withIssuedAt(new Date())        // 발행 시간
-                .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000)) // 만료 시간 (1시간)
-                .sign(algorithm);                // 서명
+                .withSubject(username)
+                .withIssuedAt(new Date())
+                .withExpiresAt(new Date(System.currentTimeMillis() + ACCESS_TOKEN_EXPIRATION))
+                .sign(Algorithm.HMAC256(SECRET_KEY));
+    }
+
+    // JWT 리프레시 토큰 생성
+    public static String createRefreshToken() {
+        return JWT.create()
+                .withIssuedAt(new Date())
+                .withExpiresAt(new Date(System.currentTimeMillis() + REFRESH_TOKEN_EXPIRATION))
+                .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 
     // JWT 검증 및 파싱
     public static DecodedJWT verifyToken(String token) {
-        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);  // 비밀 키로 서명 검증
-        return JWT.require(algorithm)    // 서명 검증용 알고리즘 설정
+        return JWT.require(Algorithm.HMAC256(SECRET_KEY))
                 .build()
-                .verify(token);            // 토큰 검증
+                .verify(token);
+    }
+
+    // 토큰에서 사용자 이름 추출
+    public static String getUsername(String token) {
+        return verifyToken(token).getSubject();
+    }
+
+    // 토큰 만료 여부 확인
+    public static boolean isTokenExpired(String token) {
+        return verifyToken(token).getExpiresAt().before(new Date());
     }
 }
