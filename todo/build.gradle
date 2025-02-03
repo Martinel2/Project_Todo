@@ -37,10 +37,6 @@ dependencies {
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.auth0:java-jwt:3.18.2'
-	implementation 'io.jsonwebtoken:jjwt-api:0.11.5' // or the latest version
-	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5' // or the latest version
-	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5' // or the latest version
-
 
 	runtimeOnly 'com.h2database:h2' // 테스트용 H2 데이터베이스
 	runtimeOnly 'mysql:mysql-connector-java' // 실제 운영에서는 MySQL 사용
