@@ -28,7 +28,12 @@ function Profile({ token }) {
           {user.provider === "kakao" && (
             <img src="path_to_kakao_icon" alt="Kakao" />
           )}
-          {/* 다른 소셜 플랫폼에 대한 조건 추가 가능 */}
+          {user.provider === "naver" && (
+            <img src="path_to_naver_icon" alt="Naver" />
+          )}
+          {user.provider === null && (
+            <img src="path_to_todo_icon" alt="Todo" />
+          )}
         </>
       ) : (
         <p>로그인이 필요합니다.</p>

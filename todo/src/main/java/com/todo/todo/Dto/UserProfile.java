@@ -8,7 +8,6 @@ public class UserProfile {
     private String username; // 사용자 이름
     private String provider; // 로그인한 서비스
     private String email; // 사용자의 이메일
-
     public void setUserName(String userName) {
         this.username = userName;
     }
