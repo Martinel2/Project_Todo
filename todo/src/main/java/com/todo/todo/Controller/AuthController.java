@@ -24,7 +24,7 @@ public class AuthController {
 
         // 실제로는 DB에서 유저를 검증해야 함
         if ("test".equals(username) && "password".equals(password)) {
-            String token = jwtUtil.createAccessToken(username);
+            String token = jwtUtil.createToken(username);
             Map<String, String> response = new HashMap<>();
             response.put("token", token);
             return ResponseEntity.ok(response);
