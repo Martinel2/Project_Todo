@@ -15,9 +15,9 @@ public class JwtUtil {
     private static final long REFRESH_TOKEN_EXPIRATION = 7 * 24 * 3600 * 1000; // 리프레시 토큰 만료 (7일)
 
     // JWT 액세스 토큰 생성
-    public static String createAccessToken(String username) {
+    public static String createAccessToken(String email) {
         return JWT.create()
-                .withSubject(username)
+                .withSubject(email)
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + ACCESS_TOKEN_EXPIRATION))
                 .sign(Algorithm.HMAC256(SECRET_KEY));

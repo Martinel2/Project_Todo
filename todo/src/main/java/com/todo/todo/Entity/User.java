@@ -26,10 +26,10 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email; // 로그인한 사용자의 이메일
 
-    @Column(name = "provider", nullable = false)
+    @Column(name = "provider", nullable = true)
     private String provider; // 사용자가 로그인한 서비스(ex) google, naver..)
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = true)
     private String password;
 
     // 사용자의 이름이나 이메일을 업데이트하는 메소드

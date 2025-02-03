@@ -54,7 +54,6 @@ public class SpringConfig {
 
                 // OAuth2 Login 추가
                 .oauth2Login(oauth2 -> oauth2
-                        .defaultSuccessUrl("/oauth/loginInfo", true) // 로그인 성공시 이동할 URL
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(oAuth2Service)) // 사용자 정보를 처리할 서비스 지정
                         .successHandler(successHandler) // OAuth2 성공 시 JWT 발급
