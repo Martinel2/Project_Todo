@@ -7,14 +7,16 @@ chaGPT와 다음과 같이 일정을 짜서 수행
 ## ✅ 1주차 (기본기 다지기 + JWT, OAuth 학습)
 ### 🎯 목표: 인증/인가 학습 및 적용
 
-DAY 1-2: JWT 인증 개념 이해 + 간단한 로그인 API 구현
+~~DAY 1-2: JWT 인증 개념 이해 + 간단한 로그인 API 구현~~
 
-DAY 3-4: OAuth 2.0 개념 학습 + Google OAuth 연동
+~~DAY 3-4: OAuth 2.0 개념 학습 + Google OAuth 연동~~
 
-DAY 5-6: Spring Security 정리 + JWT + OAuth 통합
+~~DAY 5-6: Spring Security 정리 + JWT + OAuth 통합~~
 
 DAY 7: 프로젝트 리팩토링 (보안 강화 + 클린 코드 적용)
 ✅ 결과물: JWT + OAuth 인증이 적용된 API 서버
+
+##1주차를 진행하며 배운 것 따로 글로 정리하기##
 
 ## ✅ 2주차 (테스트 & 리팩토링)
 ### 🎯 목표: 안정적인 코드 작성 & 유지보수성 개선
