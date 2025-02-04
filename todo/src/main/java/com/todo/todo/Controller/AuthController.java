@@ -41,7 +41,7 @@ public class AuthController {
         }
     }
 
-    @GetMapping("/me")
+    @GetMapping("/me") //로그인 된 사용자라면 토큰을 통해 사용자 정보 불러오기
     public ResponseEntity<UserProfile> getProfile(@RequestHeader("Authorization") String token) {
         token = token.replace("Bearer ", "");
         log.info("get email");
@@ -49,7 +49,7 @@ public class AuthController {
         log.info("user: {}", email);
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         UserProfile userProfile = new UserProfile();
-        userProfile.setUserName(user.getUsername());
+        userProfile.setUsername(user.getUsername());
         userProfile.setEmail(user.getEmail());
         userProfile.setProvider(user.getProvider());
         return ResponseEntity.ok(userProfile);

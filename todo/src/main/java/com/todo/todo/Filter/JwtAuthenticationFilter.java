@@ -1,6 +1,7 @@
 package com.todo.todo.Filter;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.todo.todo.Util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -37,6 +38,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+            } catch (TokenExpiredException e) {
+                // 토큰이 만료된 경우, 클라이언트에게 401 응답 또는 로그인 페이지로 리다이렉트
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token has expired");
+                return; // 필터 체인 중지
             } catch (JWTVerificationException e) {
                 System.out.println("Invalid JWT Token: " + e.getMessage());
             }

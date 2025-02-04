@@ -58,10 +58,6 @@ public class SpringConfig {
                                 .userService(oAuth2Service)) // 사용자 정보를 처리할 서비스 지정
                         .successHandler(successHandler) // OAuth2 성공 시 JWT 발급
                 )
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                        .sessionFixation().newSession() // 세션 고정 보호
-                )
                 .httpBasic(Customizer.withDefaults())
                 .logout((logout) -> logout
                         .logoutUrl("/logout") // 로그아웃
@@ -69,6 +65,8 @@ public class SpringConfig {
                         .invalidateHttpSession(true));// 세션 무효화
 
         // JWT 필터 등록
+        //필터는 로그인된 사용자인지를 검증하는 역할
+        //jwT는 세션을 사용하지 않기 때문에 매번 토큰을 통해 사용자를 검증
         http.addFilterBefore(new JwtAuthenticationFilter(userDetailsService), UsernamePasswordAuthenticationFilter.class);
 
 

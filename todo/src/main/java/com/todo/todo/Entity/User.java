@@ -1,14 +1,11 @@
 package com.todo.todo.Entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @Getter
+@Setter
 @DynamicUpdate // Entity update시, 원하는 데이터만 update하기 위함
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

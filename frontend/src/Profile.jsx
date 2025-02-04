@@ -1,18 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Profile({ token }) {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      navigate("/login");  // 토큰이 없으면 로그인 페이지로 리다이렉트
+      return;
+    }
 
-    fetch("http://localhost:8080/api/auth/me", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((data) => setUser(data))
-      .catch((error) => console.error("Error fetching user data:", error));
-  }, [token]);
+    axios
+      .get("http://localhost:8080/api/auth/me", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setUser(res.data))
+      .catch((error) => {
+        if (error.response && error.response.status === 401) {
+          // 401 오류가 발생하면 로그인 페이지로 리다이렉트
+          navigate("/login");
+        }
+      });
+  }, [token, navigate]);
 
   return (
     <div>
@@ -21,19 +32,10 @@ function Profile({ token }) {
         <>
           <p>환영합니다, {user.username}님!</p>
           <p>로그인한 플랫폼: {user.provider}</p>
-          {/* provider 값에 따라 소셜 아이콘을 동적으로 표시 */}
-          {user.provider === "google" && (
-            <img src="path_to_google_icon" alt="Google" />
-          )}
-          {user.provider === "kakao" && (
-            <img src="path_to_kakao_icon" alt="Kakao" />
-          )}
-          {user.provider === "naver" && (
-            <img src="path_to_naver_icon" alt="Naver" />
-          )}
-          {user.provider === null && (
-            <img src="path_to_todo_icon" alt="Todo" />
-          )}
+          {user.provider === "google" && <img src="path_to_google_icon" alt="Google" />}
+          {user.provider === "kakao" && <img src="path_to_kakao_icon" alt="Kakao" />}
+          {user.provider === "naver" && <img src="path_to_naver_icon" alt="Naver" />}
+          {user.provider === null && <img src="path_to_todo_icon" alt="Todo" />}
         </>
       ) : (
         <p>로그인이 필요합니다.</p>

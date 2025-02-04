@@ -64,6 +64,7 @@ public class OAuth2Service implements OAuth2UserService<OAuth2UserRequest, OAuth
                 .findUserByEmailAndProvider(userProfile.getEmail(), userProfile.getProvider())
                 .map(value -> value.updateUser(userProfile.getUsername(), userProfile.getEmail()))
                 .orElse(userProfile.toEntity());
+        user.setPassword(" ");
 
         return userRepository.save(user);
     }

@@ -1,20 +1,26 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const OAuthRedirectHandler = () => {
+function OAuthRedirectHandler({ setToken }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
+    // URL에서 토큰을 가져오기
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
 
     if (token) {
-      localStorage.setItem("token", token); // JWT 저장
-      navigate("/profile"); // 로그인 후 이동할 페이지
-    }
-  }, []);
+      // 토큰을 state에 설정
+      setToken(token);
+      // 로컬 스토리지에 토큰 저장
+      localStorage.setItem("token", token);
+      console.log("토큰 설정됨:", token);
+      // 프로필 페이지로 리다이렉트
+      navigate("/profile");
+    } 
+  }, [navigate, setToken]);
 
-  return <div>로그인 처리 중...</div>;
-};
+  return <div>로그인 중...</div>;
+}
 
 export default OAuthRedirectHandler;
