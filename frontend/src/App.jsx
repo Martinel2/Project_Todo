@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import Profile from "./Profile";
+import TodoApp from "./todo/todoApp";
 import OAuthRedirectHandler from "./components/OAuthRedirectHandler";
 import axios from "axios";
 
@@ -45,12 +46,12 @@ function App() {
 
   return (
     <div>
-      <h1>JWT 로그인</h1>
       <Routes>
-        <Route path="/" element={!token ? <Login setToken={setToken} /> : <Profile token={token} />} />
+        <Route path="/" element={!token ? <Login setToken={setToken} /> : <TodoApp/>} />
         <Route path="/login" element={<Login setToken={setToken} />} />  {/* /login 경로 추가 */}
         <Route path="/oauth2/redirect" element={<OAuthRedirectHandler setToken={setToken} />} />
         <Route path="/profile" element={<Profile token={token} />} />
+        <Route path="/todo" element={<TodoApp/>} />
       </Routes>
     </div>
   );
