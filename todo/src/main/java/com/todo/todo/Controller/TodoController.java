@@ -1,5 +1,7 @@
 package com.todo.todo.Controller;
 
+import com.todo.todo.Dto.TodoCreateDTO;
+import com.todo.todo.Dto.TodoDTO;
 import com.todo.todo.Entity.Todo;
 import com.todo.todo.Service.TodoService;
 import org.springframework.http.HttpStatus;
@@ -19,17 +21,17 @@ public class TodoController {
     }
 
     // ✅ 할 일 추가
-    @PostMapping("/todo")
-    public ResponseEntity<Todo> createTodo(@RequestParam String email, @RequestParam String provider, @RequestParam String task) {
-        Todo todo = todoService.createTodo(email, provider, task);
+    @PostMapping("/create")
+    public ResponseEntity<Todo> createTodo(@RequestBody TodoCreateDTO todoCreateDTO) {
+        Todo todo = todoService.createTodo(todoCreateDTO);
         if (todo != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(todo);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
     @GetMapping("/user")
-    public ResponseEntity<List<Todo>> getTodos(@RequestParam String email, @RequestParam String provider) {
-        List<Todo> todos = todoService.getTodosByUser(email, provider);
+    public ResponseEntity<List<TodoDTO>> getTodos(@RequestParam String email, @RequestParam String provider) {
+        List<TodoDTO> todos = todoService.getTodosByUser(email, provider);
         return ResponseEntity.ok(todos);
     }
 

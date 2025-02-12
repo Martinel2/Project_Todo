@@ -1,5 +1,7 @@
 package com.todo.todo.Service;
 
+import com.todo.todo.Dto.TodoCreateDTO;
+import com.todo.todo.Dto.TodoDTO;
 import com.todo.todo.Entity.Todo;
 import com.todo.todo.Entity.User;
 import com.todo.todo.Repository.TodoRepository;
@@ -41,7 +43,12 @@ class TodoServiceTest {
         user.setProvider(provider);
         userRepository.save(user);
 
-        Todo todo = todoService.createTodo(email, provider, task);
+        TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
+        todoCreateDTO.setProvider(provider);
+        todoCreateDTO.setEmail(email);
+        todoCreateDTO.setTask(task);
+
+        Todo todo = todoService.createTodo(todoCreateDTO);
 
         assertNotNull(todo);
         assertEquals(task, todo.getTitle());
@@ -72,7 +79,7 @@ class TodoServiceTest {
         todoRepository.save(todo2);
 
         // Test fetching todos
-        List<Todo> todos = todoService.getTodosByUser(email, provider);
+        List<TodoDTO> todos = todoService.getTodosByUser(email, provider);
 
         assertEquals(2, todos.size());
         assertTrue(todos.stream().anyMatch(t -> t.getTitle().equals("Task 1")));
