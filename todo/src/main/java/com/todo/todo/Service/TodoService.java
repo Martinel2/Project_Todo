@@ -18,6 +18,15 @@ public class TodoService {
         return todoRepository.save(todo);
     }
 
+    public boolean removeTodo(Todo todo){
+        try{
+            todoRepository.delete(todo);
+        }catch (IllegalArgumentException e){
+            return false;
+        }
+        return true;
+    }
+
     public List<Todo> findAll(){
         return todoRepository.findAll();
     }

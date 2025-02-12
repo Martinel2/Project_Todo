@@ -8,7 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Setter
 @DynamicUpdate // Entity update시, 원하는 데이터만 update하기 위함
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Builder
 public class User {
 
