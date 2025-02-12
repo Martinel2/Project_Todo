@@ -1,30 +1,4 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
-function Profile({ token }) {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!token) {
-      navigate("/login");  // 토큰이 없으면 로그인 페이지로 리다이렉트
-      return;
-    }
-
-    axios
-      .get("http://localhost:8080/api/auth/me", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => setUser(res.data))
-      .catch((error) => {
-        if (error.response && error.response.status === 401) {
-          // 401 오류가 발생하면 로그인 페이지로 리다이렉트
-          navigate("/login");
-        }
-      });
-  }, [token, navigate]);
-
+function Profile({ user }) {
   return (
     <div>
       <h2>대시보드</h2>

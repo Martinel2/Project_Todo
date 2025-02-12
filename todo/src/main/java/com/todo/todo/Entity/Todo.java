@@ -1,5 +1,6 @@
 package com.todo.todo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,11 @@ public class Todo {
 
     @Column(nullable = false)
     private String title;  // 할 일 제목
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private User user;
 
     private boolean completed = false; // 기본값: 미완료
 }
