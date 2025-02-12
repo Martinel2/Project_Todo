@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.379s</div>
+<div class="counter">0.360s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,8 +78,23 @@
 </tr>
 </thead>
 <tr>
+<td class="success">testGetProfile_Failure_UserNotFound()</td>
+<td class="success">0.023s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testGetProfile_Success()</td>
+<td class="success">0.097s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testLogin_Failure_InvalidCredentials()</td>
+<td class="success">0.190s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">testLogin_Success()</td>
-<td class="success">0.379s</td>
+<td class="success">0.050s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -97,15 +112,32 @@
 
  :: Spring Boot ::                (v3.4.2)
 
-2025-01-31T22:46:54.988+09:00  INFO 12632 --- [todo] [    Test worker] c.t.todo.Controller.AuthControllerTest   : Starting AuthControllerTest using Java 17.0.2 with PID 12632 (started by a in C:\Users\a\Documents\project_Todo\todo)
-2025-01-31T22:46:54.997+09:00  INFO 12632 --- [todo] [    Test worker] c.t.todo.Controller.AuthControllerTest   : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-01-31T22:46:57.996+09:00  INFO 12632 --- [todo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-01-31T22:46:57.996+09:00  INFO 12632 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-01-31T22:46:58.000+09:00  INFO 12632 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
-2025-01-31T22:46:58.068+09:00  INFO 12632 --- [todo] [    Test worker] c.t.todo.Controller.AuthControllerTest   : Started AuthControllerTest in 4.314 seconds (process running for 7.473)
-2025-01-31T22:46:58.185+09:00  INFO 12632 --- [todo] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
-2025-01-31T22:46:58.186+09:00  INFO 12632 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-01-31T22:46:58.187+09:00  INFO 12632 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-02-12T19:45:29.968+09:00  INFO 17656 --- [todo] [    Test worker] c.t.todo.Controller.AuthControllerTest   : Starting AuthControllerTest using Java 17.0.2 with PID 17656 (started by a in C:\Users\a\Documents\project_Todo\todo)
+2025-02-12T19:45:29.975+09:00  INFO 17656 --- [todo] [    Test worker] c.t.todo.Controller.AuthControllerTest   : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-02-12T19:45:32.300+09:00 DEBUG 17656 --- [todo] [    Test worker] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-02-12T19:45:32.475+09:00 DEBUG 17656 --- [todo] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2LoginAuthenticationFilter, DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, OAuth2AuthorizationCodeGrantFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-02-12T19:45:32.582+09:00  INFO 17656 --- [todo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-02-12T19:45:32.582+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-12T19:45:32.584+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-02-12T19:45:32.641+09:00  INFO 17656 --- [todo] [    Test worker] c.t.todo.Controller.AuthControllerTest   : Started AuthControllerTest in 3.352 seconds (process running for 6.886)
+2025-02-12T19:45:32.699+09:00  INFO 17656 --- [todo] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-02-12T19:45:32.699+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-12T19:45:32.700+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-02-12T19:45:32.863+09:00  INFO 17656 --- [todo] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-02-12T19:45:32.864+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-12T19:45:32.864+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-02-12T19:45:32.910+09:00  INFO 17656 --- [todo] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-02-12T19:45:32.910+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-12T19:45:32.910+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-02-12T19:45:32.957+09:00  INFO 17656 --- [todo] [    Test worker] c.todo.todo.Controller.AuthController    : get email
+2025-02-12T19:45:32.961+09:00  INFO 17656 --- [todo] [    Test worker] c.todo.todo.Controller.AuthController    : sub : Mock for DecodedJWT, hashCode: 965190120
+2025-02-12T19:45:32.961+09:00  INFO 17656 --- [todo] [    Test worker] c.todo.todo.Controller.AuthController    : user: test@example.com
+2025-02-12T19:45:33.010+09:00  INFO 17656 --- [todo] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-02-12T19:45:33.010+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-12T19:45:33.011+09:00  INFO 17656 --- [todo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-02-12T19:45:33.014+09:00  INFO 17656 --- [todo] [    Test worker] c.todo.todo.Controller.AuthController    : get email
+2025-02-12T19:45:33.015+09:00  INFO 17656 --- [todo] [    Test worker] c.todo.todo.Controller.AuthController    : sub : Mock for DecodedJWT, hashCode: 950172366
+2025-02-12T19:45:33.015+09:00  INFO 17656 --- [todo] [    Test worker] c.todo.todo.Controller.AuthController    : user: nonexistent@example.com
 </pre>
 </span>
 </div>
@@ -117,7 +149,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.12.1</a> at 2025. 1. 31. 오후 10:46:58</p>
+<a href="http://www.gradle.org">Gradle 8.12.1</a> at 2025. 2. 12. 오후 7:45:33</p>
 </div>
 </div>
 </body>

@@ -40,20 +40,43 @@ public class AuthController {
             return ResponseEntity.status(401).body(Map.of("error", "Invalid credentials"));
         }
     }
-
-    @GetMapping("/me") //로그인 된 사용자라면 토큰을 통해 사용자 정보 불러오기
-    public ResponseEntity<UserProfile> getProfile(@RequestHeader("Authorization") String token) {
+    @GetMapping("/me") // 로그인 된 사용자라면 토큰을 통해 사용자 정보 불러오기
+    public ResponseEntity<?> getProfile(@RequestHeader("Authorization") String token) {
         token = token.replace("Bearer ", "");
-        log.info("get email");
-        String email = jwtUtil.verifyToken(token).getSubject();  // JWT에서 사용자 정보 추출
-        log.info("user: {}", email);
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        UserProfile userProfile = new UserProfile();
-        userProfile.setUsername(user.getUsername());
-        userProfile.setEmail(user.getEmail());
-        userProfile.setProvider(user.getProvider());
-        return ResponseEntity.ok(userProfile);
+        String email = null;
+
+        try {
+            log.info("get email");
+            email = jwtUtil.verifyToken(token).getSubject();
+            log.info("sub : " + jwtUtil.verifyToken(token));
+        } catch (Exception e) {
+            // 토큰 검증 중 예외가 발생하면 404 반환
+            return ResponseEntity.status(401).body(Map.of("error", "User email is not found"));
+        }
+
+        if (email != null) {
+            log.info("user: {}", email);
+            // 사용자 이메일로 찾고, 존재하지 않으면 404 반환
+            User user = userRepository.findByEmail(email).orElse(null);
+
+            if (user == null) {
+                // 사용자 정보가 없을 경우 404 오류 반환
+                return ResponseEntity.status(403).body(Map.of("error", "User not found"));
+            }
+
+            // 사용자 프로필 반환
+            UserProfile userProfile = new UserProfile();
+            userProfile.setUsername(user.getUsername());
+            userProfile.setEmail(user.getEmail());
+            userProfile.setProvider(user.getProvider());
+
+            return ResponseEntity.ok(userProfile);
+        }
+
+        // 이메일이 null인 경우 400 또는 다른 상태 코드를 반환할 수 있음
+        return ResponseEntity.status(401).body(Map.of("error", "Invalid token"));
     }
+
 
    /* @GetMapping("/me")
     public ResponseEntity<Map<String, String>> getUser(@RequestHeader("Authorization") String token) {
