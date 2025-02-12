@@ -17,6 +17,10 @@ public class Todo {
     @Column(nullable = false)
     private String title;  // 할 일 제목
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     private boolean completed = false; // 기본값: 미완료
 }
 

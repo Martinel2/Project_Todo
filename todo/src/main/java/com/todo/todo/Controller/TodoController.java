@@ -19,12 +19,19 @@ public class TodoController {
     }
 
     // ✅ 할 일 추가
-    @PostMapping("/create")
-    public ResponseEntity<Todo> createTodo(@RequestBody Todo todo) {
-        Todo savedTodo = todoService.createTodo(todo);
-        return ResponseEntity.ok(savedTodo);
+    @PostMapping("/todo")
+    public ResponseEntity<Todo> createTodo(@RequestParam String email, @RequestParam String provider, @RequestParam String task) {
+        Todo todo = todoService.createTodo(email, provider, task);
+        if (todo != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(todo);
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
+    @GetMapping("/user")
+    public ResponseEntity<List<Todo>> getTodos(@RequestParam String email, @RequestParam String provider) {
+        List<Todo> todos = todoService.getTodosByUser(email, provider);
+        return ResponseEntity.ok(todos);
+    }
 
     @PostMapping("/remove")
     public ResponseEntity<String> removeTodo(@RequestBody Todo todo) {
@@ -36,12 +43,5 @@ public class TodoController {
         }
     }
 
-
-    // ✅ 할 일 목록 조회
-    @GetMapping
-    public ResponseEntity<List<Todo>> getTodos() {
-        List<Todo> todos = todoService.findAll();
-        return ResponseEntity.ok(todos);
-    }
 }
 

@@ -3,6 +3,9 @@ package com.todo.todo.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
+
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -28,6 +31,9 @@ public class User {
 
     @Column(name = "password", nullable = true)
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<Todo> todos;
 
     // 사용자의 이름이나 이메일을 업데이트하는 메소드
     public User updateUser(String username, String email) {
