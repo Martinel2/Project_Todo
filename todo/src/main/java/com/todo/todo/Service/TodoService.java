@@ -40,13 +40,13 @@ public class TodoService {
     }
 
 
-    public boolean removeTodo(Todo todo){
-        try{
-            todoRepository.delete(todo);
-        }catch (IllegalArgumentException e){
-            return false;
+    public boolean deleteTodo(long id){
+        Optional<Todo> todo = todoRepository.findById(id);  // id로 Todo 조회
+        if (todo.isPresent()) {
+            todoRepository.delete(todo.get());  // Todo 삭제
+            return true;
         }
-        return true;
+        return false;
     }
 
     public List<Todo> findAll(){
