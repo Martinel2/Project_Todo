@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">2</div>
+<div class="counter">3</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.090s</div>
+<div class="counter">1.491s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,12 +79,17 @@
 </thead>
 <tr>
 <td class="success">testCreateTodoForUser()</td>
-<td class="success">0.045s</td>
+<td class="success">0.044s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testDelete()</td>
+<td class="success">0.092s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetTodosByUser()</td>
-<td class="success">1.045s</td>
+<td class="success">1.355s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -92,8 +97,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>23:13:41.504 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.todo.todo.Service.TodoServiceTest]: TodoServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-23:13:41.774 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.todo.todo.TodoApplication for test class com.todo.todo.Service.TodoServiceTest
+<pre>00:13:35.870 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.todo.todo.Service.TodoServiceTest]: TodoServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:13:36.260 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.todo.todo.TodoApplication for test class com.todo.todo.Service.TodoServiceTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -104,24 +109,24 @@
 
  :: Spring Boot ::                (v3.4.2)
 
-2025-02-12T23:13:42.472+09:00  INFO 19452 --- [todo] [    Test worker] com.todo.todo.Service.TodoServiceTest    : Starting TodoServiceTest using Java 17.0.2 with PID 19452 (started by a in C:\Users\a\Documents\project_Todo\todo)
-2025-02-12T23:13:42.474+09:00  INFO 19452 --- [todo] [    Test worker] com.todo.todo.Service.TodoServiceTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-02-12T23:13:44.452+09:00  INFO 19452 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-02-12T23:13:44.454+09:00  INFO 19452 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2025-02-12T23:13:44.508+09:00  INFO 19452 --- [todo] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.todo.todo.Repository.TodoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2025-02-12T23:13:44.511+09:00  INFO 19452 --- [todo] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.todo.todo.Repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2025-02-12T23:13:44.513+09:00  INFO 19452 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 0 JDBC repository interfaces.
-2025-02-12T23:13:44.535+09:00  INFO 19452 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-02-12T23:13:44.536+09:00  INFO 19452 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-12T23:13:44.589+09:00  INFO 19452 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 2 JPA repository interfaces.
-2025-02-12T23:13:45.940+09:00  INFO 19452 --- [todo] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-12T23:13:46.100+09:00  INFO 19452 --- [todo] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
-2025-02-12T23:13:46.163+09:00  INFO 19452 --- [todo] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-12T23:13:46.657+09:00  INFO 19452 --- [todo] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-12T23:13:46.712+09:00  INFO 19452 --- [todo] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-02-12T23:13:47.213+09:00  INFO 19452 --- [todo] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2de96eba
-2025-02-12T23:13:47.220+09:00  INFO 19452 --- [todo] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-02-12T23:13:47.356+09:00  INFO 19452 --- [todo] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-02-14T00:13:37.139+09:00  INFO 13676 --- [todo] [    Test worker] com.todo.todo.Service.TodoServiceTest    : Starting TodoServiceTest using Java 17.0.2 with PID 13676 (started by a in C:\Users\a\Documents\project_Todo\todo)
+2025-02-14T00:13:37.143+09:00  INFO 13676 --- [todo] [    Test worker] com.todo.todo.Service.TodoServiceTest    : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-02-14T00:13:39.414+09:00  INFO 13676 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-02-14T00:13:39.416+09:00  INFO 13676 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-02-14T00:13:39.486+09:00  INFO 13676 --- [todo] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.todo.todo.Repository.TodoRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-02-14T00:13:39.490+09:00  INFO 13676 --- [todo] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.todo.todo.Repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-02-14T00:13:39.492+09:00  INFO 13676 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 63 ms. Found 0 JDBC repository interfaces.
+2025-02-14T00:13:39.511+09:00  INFO 13676 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-02-14T00:13:39.514+09:00  INFO 13676 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-14T00:13:39.580+09:00  INFO 13676 --- [todo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 2 JPA repository interfaces.
+2025-02-14T00:13:41.334+09:00  INFO 13676 --- [todo] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-14T00:13:41.514+09:00  INFO 13676 --- [todo] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-02-14T00:13:41.645+09:00  INFO 13676 --- [todo] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-02-14T00:13:42.433+09:00  INFO 13676 --- [todo] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-14T00:13:42.487+09:00  INFO 13676 --- [todo] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-14T00:13:42.949+09:00  INFO 13676 --- [todo] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d946eee
+2025-02-14T00:13:42.954+09:00  INFO 13676 --- [todo] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-14T00:13:43.078+09:00  INFO 13676 --- [todo] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0.37
@@ -129,12 +134,12 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-02-12T23:13:48.946+09:00  INFO 19452 --- [todo] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-12T23:13:49.057+09:00  INFO 19452 --- [todo] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-12T23:13:50.275+09:00  INFO 19452 --- [todo] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
-2025-02-12T23:13:51.602+09:00  INFO 19452 --- [todo] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2025-02-12T23:13:51.843+09:00 DEBUG 19452 --- [todo] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2LoginAuthenticationFilter, JwtAuthenticationFilter, DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, BasicAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
-2025-02-12T23:13:53.369+09:00  INFO 19452 --- [todo] [    Test worker] com.todo.todo.Service.TodoServiceTest    : Started TodoServiceTest in 11.328 seconds (process running for 13.286)
+2025-02-14T00:13:44.955+09:00  INFO 13676 --- [todo] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-14T00:13:45.065+09:00  INFO 13676 --- [todo] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-14T00:13:46.859+09:00  INFO 13676 --- [todo] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-02-14T00:13:48.654+09:00  INFO 13676 --- [todo] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-02-14T00:13:48.974+09:00 DEBUG 13676 --- [todo] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2LoginAuthenticationFilter, JwtAuthenticationFilter, DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, BasicAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-02-14T00:13:50.885+09:00  INFO 13676 --- [todo] [    Test worker] com.todo.todo.Service.TodoServiceTest    : Started TodoServiceTest in 14.35 seconds (process running for 16.478)
 Hibernate: 
     insert 
     into
@@ -143,12 +148,36 @@ Hibernate:
     values
         (?, ?, ?, ?)
 Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.provider,
+        u1_0.username 
+    from
+        user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.provider=?
+Hibernate: 
     insert 
     into
         todo
         (completed, title, user_id) 
     values
         (?, ?, ?)
+Hibernate: 
+    select
+        u1_0.user_id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.provider,
+        u1_0.username 
+    from
+        user u1_0 
+    where
+        u1_0.email=? 
+        and u1_0.provider=?
 Hibernate: 
     insert 
     into
@@ -196,6 +225,47 @@ Hibernate:
         (completed, title, user_id) 
     values
         (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        user
+        (email, password, provider, username) 
+    values
+        (?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        todo
+        (completed, title, user_id) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        todo
+        (completed, title, user_id) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    delete 
+    from
+        todo 
+    where
+        id=?
+Hibernate: 
+    select
+        t1_0.id,
+        t1_0.completed,
+        t1_0.title,
+        t1_0.user_id 
+    from
+        todo t1_0 
+    left join
+        user u1_0 
+            on u1_0.user_id=t1_0.user_id 
+    where
+        u1_0.email=? 
+        and u1_0.provider=?
 </pre>
 </span>
 </div>
@@ -207,7 +277,7 @@ Hibernate:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.12.1</a> at 2025. 2. 12. 오후 11:13:54</p>
+<a href="http://www.gradle.org">Gradle 8.12.1</a> at 2025. 2. 14. 오전 12:13:52</p>
 </div>
 </div>
 </body>

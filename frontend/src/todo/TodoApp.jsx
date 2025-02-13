@@ -26,20 +26,20 @@ function TodoApp({ user }) {
       setLoading(false);  // End loading
     }
   };
-
+  //console.log(todos);
   const createTodo = async () => {
     if (!task.trim()) {
       console.error("Task cannot be empty");
       return;
     }
-  
+
     try {
       const newTodo = { email, provider, task };
       const response = await axios.post("http://localhost:8080/api/todos/create", newTodo);
-  
+
       // 응답 확인 (디버깅용)
       console.log("Todo created:", response.data);
-      
+
       // 새로 생성된 todo를 todos 목록에 추가
       setTodos((prevTodos) => [...prevTodos, response.data]);
       setTask("");  // task 초기화
@@ -51,7 +51,26 @@ function TodoApp({ user }) {
       }
     }
   };
+
+  const deleteTodo = async (id) => {  // id를 받아서 해당 todo 삭제
+    try {
+      const response = await axios.post("http://localhost:8080/api/todos/delete", { id });  // id만 보내기
   
+      // 응답 확인 (디버깅용)
+      console.log("Todo deleted:", response.data);
+  
+      // 삭제된 todo를 todos 목록에서 제거
+      setTodos((prevTodos) => prevTodos.filter(todo => todo.id !== id));  // 해당 id를 제외한 todos로 갱신
+    } catch (error) {
+      console.error("Error deleting todo:", error);
+      if (error.response) {
+        // 서버로부터의 응답이 있을 경우, 응답 내용 로그 출력
+        console.error("Server responded with:", error.response.data);
+      }
+    }
+  };
+  
+
   useEffect(() => {
     if (user && email && provider) {
       getTodos();
@@ -78,7 +97,10 @@ function TodoApp({ user }) {
         <ul>
           {Array.isArray(todos) && todos.length > 0 ? (
             todos.map((todo) => (
-              <li key={todo.id}>{todo.title}</li> 
+              <li key={todo.id}>
+                {todo.title}
+                <button className="todo-input" onClick={() => deleteTodo(todo.id)}>삭제</button>  {/* 삭제 버튼에 id 전달 */}
+              </li>
             ))
           ) : (
             <li>No todos found</li>
