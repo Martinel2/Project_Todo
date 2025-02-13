@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/todos")
@@ -35,15 +36,17 @@ public class TodoController {
         return ResponseEntity.ok(todos);
     }
 
-    @PostMapping("/remove")
-    public ResponseEntity<String> removeTodo(@RequestBody Todo todo) {
-        boolean isDeleted = todoService.removeTodo(todo);
+    @PostMapping("/delete")
+    public ResponseEntity<String> deleteTodo(@RequestBody Map<String, Long> request) {
+        Long id = request.get("id");  // id만 받기
+        boolean isDeleted = todoService.deleteTodo(id);  // id를 통해 삭제 작업 수행
         if (isDeleted) {
             return ResponseEntity.ok("Todo item successfully deleted");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Todo item not found");
         }
     }
+
 
 }
 

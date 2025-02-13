@@ -68,6 +68,40 @@ class TodoServiceTest {
         userRepository.save(user);
 
         // Add todos for the user
+        TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
+        todoCreateDTO.setTask("Task 1");
+        todoCreateDTO.setProvider(provider);
+        todoCreateDTO.setEmail(email);
+        todoService.createTodo(todoCreateDTO);
+
+
+        TodoCreateDTO todoCreateDTO2 = new TodoCreateDTO();
+        todoCreateDTO2.setTask("Task 2");
+        todoCreateDTO2.setProvider(provider);
+        todoCreateDTO2.setEmail(email);
+        todoService.createTodo(todoCreateDTO2);
+
+        // Test fetching todos
+        List<TodoDTO> todos = todoService.getTodosByUser(email, provider);
+
+        assertEquals(2, todos.size());
+        assertTrue(todos.stream().anyMatch(t -> t.getTitle().equals("Task 1")));
+        assertTrue(todos.stream().anyMatch(t -> t.getTitle().equals("Task 2")));
+    }
+
+    @Test
+    void testDelete() {
+        String email = "user@example.com";
+        String provider = "google";
+
+        // Setup test user
+        User user = new User();
+        user.setUsername("TestUser");
+        user.setEmail(email);
+        user.setProvider(provider);
+        userRepository.save(user);
+
+        // Add todos for the user
         Todo todo1 = new Todo();
         todo1.setTitle("Task 1");
         todo1.setUser(user);
@@ -78,11 +112,13 @@ class TodoServiceTest {
         todo2.setUser(user);
         todoRepository.save(todo2);
 
+        todoService.deleteTodo(todo1.getId());
+
         // Test fetching todos
         List<TodoDTO> todos = todoService.getTodosByUser(email, provider);
 
-        assertEquals(2, todos.size());
-        assertTrue(todos.stream().anyMatch(t -> t.getTitle().equals("Task 1")));
+        assertEquals(1, todos.size());
+        assertTrue(!todos.stream().anyMatch(t -> t.getTitle().equals("Task 1")));
         assertTrue(todos.stream().anyMatch(t -> t.getTitle().equals("Task 2")));
     }
 }
