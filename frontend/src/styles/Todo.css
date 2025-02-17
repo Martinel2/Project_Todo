@@ -1,76 +1,55 @@
-/* 전체 레이아웃 */
-.todo-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  /* 제목 */
-  h1 {
-    color: #333;
-    font-size: 24px;
-  }
-  
-  /* 입력 필드 & 버튼 */
-  .todo-input {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .todo-input input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .todo-input button {
-    padding: 10px 15px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .todo-input button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* 할 일 리스트 */
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  li:last-child {
-    border-bottom: none;
-  }
-  
-  /* 삭제 버튼 */
-  .delete-btn {
-    background: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .delete-btn:hover {
-    background: darkred;
-  }
-  
+.notion-container {
+  width: 60%;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.note {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  min-height: 30px;
+  cursor: text;
+  transition: background 0.2s ease-in-out;
+}
+
+.note:empty:before {
+  content: "클릭하여 입력...";
+  color: gray;
+}
+
+.note:hover {
+  background: #f7f7f7;
+}
+
+.delete-btn {
+  float: right;
+  border: none;
+  background: red;
+  color: white;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.add-note {
+  padding: 10px;
+  text-align: center;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  color: gray;
+  transition: background 0.2s ease-in-out;
+}
+
+.add-note:hover {
+  background: #f7f7f7;
+  color: black;
+}
