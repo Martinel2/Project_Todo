@@ -15,7 +15,7 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String title;  // 할 일 제목
 
     @ManyToOne
@@ -23,6 +23,5 @@ public class Todo {
     @JsonBackReference
     private User user;
 
-    private boolean completed = false; // 기본값: 미완료
 }
 

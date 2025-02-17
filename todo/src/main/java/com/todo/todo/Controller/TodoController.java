@@ -30,6 +30,17 @@ public class TodoController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
+
+    @PostMapping("/update")
+    public ResponseEntity<String> updateTodo(@RequestBody TodoDTO todoDTO) {
+        boolean isUpdated = todoService.updateTodo(todoDTO);  // id를 통해 삭제 작업 수행
+        if (isUpdated) {
+            return ResponseEntity.ok(todoDTO.getContent());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Todo item not found");
+        }
+    }
+
     @GetMapping("/user")
     public ResponseEntity<List<TodoDTO>> getTodos(@RequestParam String email, @RequestParam String provider) {
         List<TodoDTO> todos = todoService.getTodosByUser(email, provider);

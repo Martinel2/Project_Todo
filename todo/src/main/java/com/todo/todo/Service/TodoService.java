@@ -39,6 +39,23 @@ public class TodoService {
         return null; // or throw exception
     }
 
+    public boolean updateTodo(TodoDTO todoDTO) {
+        Optional<Todo> todo = todoRepository.findById(todoDTO.getId());  // id로 Todo 조회
+        if (todo.isPresent()) {
+            Todo upTodo = todo.get();
+            upTodo.setTitle(todoDTO.getContent());
+            // save() 메소드가 반환하는 객체와 비교하지 말고, 예외가 발생하지 않도록 처리
+            try {
+                todoRepository.save(upTodo);  // 데이터베이스에 업데이트
+                return true;  // 저장이 성공하면 true 반환
+            } catch (Exception e) {
+                return false;  // 예외가 발생하면 false 반환
+            }
+        }
+        return false;  // id로 Todo를 찾을 수 없으면 false 반환
+    }
+
+
 
     public boolean deleteTodo(long id){
         Optional<Todo> todo = todoRepository.findById(id);  // id로 Todo 조회
