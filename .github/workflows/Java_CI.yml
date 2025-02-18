@@ -25,13 +25,19 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Setup MySQL
-      uses: samin/mysql-action@v1
-      with:
-        character set server: 'utf8'
-        mysql database: 'todo'
-        mysql user: 'root'
-        mysql password: '0000' # github Secret 탭에서 설정하세요!
+
+    - name: Install MySQL client
+      run: sudo apt-get install mysql-client
+      
+
+    # MySQL 서버를 로컬에서 사용할 수 있도록 환경변수 설정
+    - name: Set up MySQL credentials
+      run: |
+        echo "MYSQL_HOST=localhost" >> $GITHUB_ENV
+        echo "MYSQL_PORT=3306" >> $GITHUB_ENV
+        echo "MYSQL_USER=root" >> $GITHUB_ENV
+        echo "MYSQL_PASSWORD=0000" >> $GITHUB_ENV
+        echo "MYSQL_DATABASE=todo" >> $GITHUB_ENV
 
     - name: Grant execute permission for gradlew
       run: cd todo && chmod +x gradlew
@@ -57,7 +63,6 @@ jobs:
     #
     # - name: Build with Gradle 8.9
     #   run: gradle build
-
   dependency-submission:
     runs-on: ubuntu-latest
     permissions:
@@ -71,7 +76,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    - name: Grant execute permissions to gradlew
+      run: chmod +x ./todo/gradlew  # Make gradlew executable
+
     - name: Generate and submit dependency graph
-      working-directory: ./todo  # Ensure this is the correct folder where gradlew exists
-      run: ./gradlew dependencySubmission  # This will use the gradle wrapper from the todo folder
+      working-directory: ./todo
+      run: ./gradlew dependencySubmission
+
 
