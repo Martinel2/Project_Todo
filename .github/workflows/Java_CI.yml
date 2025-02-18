@@ -72,7 +72,6 @@ jobs:
         distribution: 'temurin'
 
     - name: Generate and submit dependency graph
-      working-directory: ./todo  # 이 부분이 todo 폴더로 변경된 부분입니다.
-      uses: gradle/actions/dependency-submission@v4
-
+      working-directory: ./todo  # Ensure this is the correct folder where gradlew exists
+      run: ./gradlew dependencySubmission  # This will use the gradle wrapper from the todo folder
 
