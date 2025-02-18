@@ -25,11 +25,13 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - uses: mirromutth/mysql-action@v1.1
+    - name: Setup MySQL
+      uses: samin/mysql-action@v1
       with:
-      host port: 3306
-      mysql database: 'todo'
-      mysql root password: 0000
+        character set server: 'utf8'
+        mysql database: 'todo'
+        mysql user: 'root'
+        mysql password: '0000' # github Secret 탭에서 설정하세요!
 
     - name: Grant execute permission for gradlew
       run: cd todo && chmod +x gradlew
