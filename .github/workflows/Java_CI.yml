@@ -13,10 +13,7 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
 
     services:
         mysql:
@@ -41,12 +38,6 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-
-    - name: Grant execute permission for gradlew
-      run: cd todo && chmod +x gradlew
-      
-    - name: Install dependencies
-      run: cd todo && ./gradlew dependencies
     
     - name: Wait for MySQL to be ready
       run: sleep 10s
@@ -88,5 +79,7 @@ jobs:
     # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
-    working-directory: todo
-    uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+    uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582
+    with:
+      working-directory: todo
+  
