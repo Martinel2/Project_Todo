@@ -12,11 +12,27 @@ on:
     branches: [ "develop" ]
 
 jobs:
-  build-and-test:
+  test:
 
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
+    services:
+        mysql:
+          image: mysql:8.0
+          env:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: todo
+            MYSQL_USER: root
+            MYSQL_PASSWORD: 0000
+          ports:
+            - 3306:3306
+          options: >-
+            --health-cmd="mysqladmin ping -h localhost"
+            --health-interval=10s
+            --health-timeout=5s
+            --health-retries=3
 
     steps:
     - uses: actions/checkout@v4
@@ -32,11 +48,16 @@ jobs:
     - name: Install dependencies
       run: cd todo && ./gradlew dependencies
     
+    - name: Wait for MySQL to be ready
+      run: sleep 10s
+
     - name: Run tests
-      run: cd todo && ./gradlew test
-      
-    - name: Build project
-      run: cd todo && ./gradlew build
+      working-directory: todo
+      run: ./gradlew test
+      env:
+        SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/todo
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: 0000
       
           
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
@@ -67,4 +88,5 @@ jobs:
     # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
-      uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+    working-directory: todo
+    uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
