@@ -65,4 +65,4 @@ jobs:
         DB_USERNAME: "testuser"
         DB_PASSWORD: "testpass"
       run: |
-        ./gradlew test
+        cd todo && ./gradlew test
