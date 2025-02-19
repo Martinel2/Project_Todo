@@ -29,27 +29,20 @@ jobs:
     - name: Install MySQL client
       run: sudo apt-get install mysql-client
 
-    - name: Check MySQL connection
-      run: |
-        mysql -h localhost -u root -prootpassword -e "SHOW DATABASES;"
-    
-    - name: Check MySQL port 3306
-      run: |
-        telnet localhost 3306
-
     # MySQL 서버를 로컬에서 사용할 수 있도록 환경변수 설정
-    - uses: samin/mysql-action@v1
+    - name: Setup MySQL
+      uses: samin/mysql-action@v1
       with:
-        host port: 3800 # Optional, default value is 3306. The port of host
-        container port: 3307 # Optional, default value is 3306. The port of container
-        character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
-        collation server: 'utf8_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
-        mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
-        mysql database: 'todo' # Optional, default value is "test". The specified database which will be create
-        mysql root password: '0000' # Required if "mysql user" is empty, default is empty. The root superuser password
-        mysql user: 'root' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Of course you can use secrets, too
-        mysql password: '0000' # Required if "mysql user" exists. The password for the "mysql user"
-
+          character set server: 'utf8' 
+          mysql database: 'todo' 
+          mysql user: 'root'
+          mysql password: '0000'
+          
+    - name: Check MySQL connection
+      run: mysql -h 127.0.0.1 -u root -prootpassword -e "SHOW DATABASES;"
+        
+    - name: Check MySQL port 3306
+      run: telnet localhost 3306
 
     - name: Grant execute permission for gradlew
       run: cd todo && chmod +x gradlew
