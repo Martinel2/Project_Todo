@@ -7,8 +7,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
+    permissions: write-all
     services:
       mysql:
         image: mysql:8.0
