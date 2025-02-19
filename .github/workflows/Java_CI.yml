@@ -1,10 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
-
 name: Java CI with Gradle
 
 on:
@@ -13,13 +6,20 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: 0000  # 설정한 비밀번호
+        ports:
+          - 3306:3306
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -37,23 +37,25 @@ jobs:
           mysql database: 'todo' 
           mysql user: 'root'
           mysql password: '0000'
-          
+
+    # MySQL 연결 확인
     - name: Check MySQL connection
-      run: sudo systemctl start mysql && mysql -h 127.0.0.1 -u root -prootpassword -e "SHOW DATABASES;"
-        
+      run: |
+        sleep 30  # 충분한 대기 시간 추가
+        mysql -h mysql -u root -p0000 -e "SHOW DATABASES;"  # 서비스 이름 mysql 사용
+
     - name: Check MySQL port 3306
       run: telnet localhost 3306
 
     - name: Grant execute permission for gradlew
       run: cd todo && chmod +x gradlew
-      
+
     - name: Install dependencies
       run: cd todo && ./gradlew dependencies
-    
+
     - name: Wait for MySQL to be ready
       run: sleep 10s
 
     - name: Run tests
       working-directory: todo
       run: ./gradlew test
-
