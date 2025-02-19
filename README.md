@@ -21,15 +21,18 @@ chaGPT와 다음과 같이 일정을 짜서 수행
 
 ## ✅ 2주차 (테스트 & 리팩토링)
 ### 🎯 목표: 안정적인 코드 작성 & 유지보수성 개선
-#### 2주차 진행 전에 Todo 사이트에 걸맞게 기본 기능을 구현
+
+#### 2주차 진행 전에 Todo 사이트에 걸맞게 기본 기능을 구현 
+- ++2025/2/19) 추가 수정 삭제 기능 추가, 이를 Notion형식과 유사하게 빈 공간을 클릭 시 입력할 수 있는 칸이 등장하도록 함
 #### 구현하면서 테스트 코드를 작성하는 방식으로 진행해보자!
-DAY 8-9: JUnit, Mockito로 단위 테스트 작성
 
-DAY 10-11: API 테스트 (Postman, RestAssured)
+DAY 8-9: JUnit, Mockito로 단위 테스트 작성 - 진행중
 
-DAY 12-13: 코드 리팩토링 (SOLID 원칙 적용)
+DAY 10-11: API 테스트 (Postman, RestAssured) - 진행중
 
-DAY 14: CI/CD 개념 학습 (GitHub Actions, Jenkins 기초)
+DAY 12-13: 코드 리팩토링 (SOLID 원칙 적용) - 진행중
+
+DAY 14: CI/CD 개념 학습 (GitHub Actions, Jenkins 기초) - CI 적용 완료!
 
 ✅ 결과물: 테스트 코드 80% 이상 커버 + 리팩토링된 백엔드 코드
 
