@@ -1,0 +1,1282 @@
+{
+  "name": ":",
+  "file": {
+    "source_location": "todo\\build.gradle"
+  },
+  "resolved": {
+    "pkg:github/gradle/gradle@0b1ee1ff81d1f4a26574ff4a362ac9180852b140": {
+      "package_url": "pkg:github/gradle/gradle@0b1ee1ff81d1f4a26574ff4a362ac9180852b140",
+      "relationship": "direct",
+      "scope": "development"
+    },
+    "pkg:maven/org.springframework.boot/org.springframework.boot.gradle.plugin@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/org.springframework.boot.gradle.plugin@3.4.2",
+      "relationship": "direct",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-gradle-plugin@3.4.2"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-gradle-plugin@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-gradle-plugin@3.4.2",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-buildpack-platform@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-loader-tools@3.4.2",
+        "pkg:maven/io.spring.gradle/dependency-management-plugin@1.1.7",
+        "pkg:maven/org.apache.commons/commons-compress@1.25.0",
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-buildpack-platform@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-buildpack-platform@3.4.2",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.module/jackson-module-parameter-names@2.18.2",
+        "pkg:maven/net.java.dev.jna/jna-platform@5.13.0",
+        "pkg:maven/org.apache.commons/commons-compress@1.25.0",
+        "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.4.1",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.tomlj/tomlj@1.0.0"
+      ]
+    },
+    "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.18.2": {
+      "package_url": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.18.2",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.18.2",
+        "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2"
+      ]
+    },
+    "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.2": {
+      "package_url": "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2"
+      ]
+    },
+    "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2": {
+      "package_url": "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.18.2": {
+      "package_url": "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.18.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2"
+      ]
+    },
+    "pkg:maven/com.fasterxml.jackson.module/jackson-module-parameter-names@2.18.2": {
+      "package_url": "pkg:maven/com.fasterxml.jackson.module/jackson-module-parameter-names@2.18.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.4",
+        "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2"
+      ]
+    },
+    "pkg:maven/net.java.dev.jna/jna-platform@5.13.0": {
+      "package_url": "pkg:maven/net.java.dev.jna/jna-platform@5.13.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/net.java.dev.jna/jna@5.13.0"
+      ]
+    },
+    "pkg:maven/net.java.dev.jna/jna@5.13.0": {
+      "package_url": "pkg:maven/net.java.dev.jna/jna@5.13.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/org.apache.commons/commons-compress@1.25.0": {
+      "package_url": "pkg:maven/org.apache.commons/commons-compress@1.25.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.4.1": {
+      "package_url": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.4.1",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.apache.httpcomponents.core5/httpcore5@5.3.1",
+        "pkg:maven/org.apache.httpcomponents.core5/httpcore5-h2@5.3.1",
+        "pkg:maven/org.slf4j/slf4j-api@1.7.36"
+      ]
+    },
+    "pkg:maven/org.apache.httpcomponents.core5/httpcore5@5.3.1": {
+      "package_url": "pkg:maven/org.apache.httpcomponents.core5/httpcore5@5.3.1",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/org.apache.httpcomponents.core5/httpcore5-h2@5.3.1": {
+      "package_url": "pkg:maven/org.apache.httpcomponents.core5/httpcore5-h2@5.3.1",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.apache.httpcomponents.core5/httpcore5@5.3.1"
+      ]
+    },
+    "pkg:maven/org.slf4j/slf4j-api@1.7.36": {
+      "package_url": "pkg:maven/org.slf4j/slf4j-api@1.7.36",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework/spring-core@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-core@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-jcl@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-jcl@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-jcl@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.tomlj/tomlj@1.0.0": {
+      "package_url": "pkg:maven/org.tomlj/tomlj@1.0.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.antlr/antlr4-runtime@4.7.2",
+        "pkg:maven/com.google.code.findbugs/jsr305@3.0.2"
+      ]
+    },
+    "pkg:maven/org.antlr/antlr4-runtime@4.7.2": {
+      "package_url": "pkg:maven/org.antlr/antlr4-runtime@4.7.2",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/com.google.code.findbugs/jsr305@3.0.2": {
+      "package_url": "pkg:maven/com.google.code.findbugs/jsr305@3.0.2",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-loader-tools@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-loader-tools@3.4.2",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.apache.commons/commons-compress@1.25.0",
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/io.spring.gradle/dependency-management-plugin@1.1.7": {
+      "package_url": "pkg:maven/io.spring.gradle/dependency-management-plugin@1.1.7",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/io.spring.dependency-management/io.spring.dependency-management.gradle.plugin@1.1.7": {
+      "package_url": "pkg:maven/io.spring.dependency-management/io.spring.dependency-management.gradle.plugin@1.1.7",
+      "relationship": "direct",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/io.spring.gradle/dependency-management-plugin@1.1.7"
+      ]
+    },
+    "pkg:maven/io.freefair.github.dependency-submission/io.freefair.github.dependency-submission.gradle.plugin@8.12.1": {
+      "package_url": "pkg:maven/io.freefair.github.dependency-submission/io.freefair.github.dependency-submission.gradle.plugin@8.12.1",
+      "relationship": "direct",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/io.freefair.gradle/github-plugin@8.12.1"
+      ]
+    },
+    "pkg:maven/io.freefair.gradle/github-plugin@8.12.1": {
+      "package_url": "pkg:maven/io.freefair.gradle/github-plugin@8.12.1",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.squareup.retrofit2/retrofit@2.11.0",
+        "pkg:maven/com.squareup.retrofit2/converter-gson@2.11.0",
+        "pkg:maven/com.github.package-url/packageurl-java@1.5.0",
+        "pkg:maven/io.freefair.gradle/plugin-utils@8.12.1",
+        "pkg:maven/io.freefair.gradle/okhttp-plugin@8.12.1"
+      ]
+    },
+    "pkg:maven/com.squareup.retrofit2/retrofit@2.11.0": {
+      "package_url": "pkg:maven/com.squareup.retrofit2/retrofit@2.11.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.squareup.okhttp3/okhttp@4.12.0"
+      ]
+    },
+    "pkg:maven/com.squareup.okhttp3/okhttp@4.12.0": {
+      "package_url": "pkg:maven/com.squareup.okhttp3/okhttp@4.12.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.squareup.okio/okio@3.6.0",
+        "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-jdk8@1.9.10"
+      ]
+    },
+    "pkg:maven/com.squareup.okio/okio@3.6.0": {
+      "package_url": "pkg:maven/com.squareup.okio/okio@3.6.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.squareup.okio/okio-jvm@3.6.0"
+      ]
+    },
+    "pkg:maven/com.squareup.okio/okio-jvm@3.6.0": {
+      "package_url": "pkg:maven/com.squareup.okio/okio-jvm@3.6.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-jdk8@1.9.10",
+        "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-common@1.9.10"
+      ]
+    },
+    "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-jdk8@1.9.10": {
+      "package_url": "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-jdk8@1.9.10",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib@1.9.10",
+        "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-jdk7@1.9.10"
+      ]
+    },
+    "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib@1.9.10": {
+      "package_url": "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib@1.9.10",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-common@1.9.10",
+        "pkg:maven/org.jetbrains/annotations@13.0"
+      ]
+    },
+    "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-common@1.9.10": {
+      "package_url": "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-common@1.9.10",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/org.jetbrains/annotations@13.0": {
+      "package_url": "pkg:maven/org.jetbrains/annotations@13.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-jdk7@1.9.10": {
+      "package_url": "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-jdk7@1.9.10",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib@1.9.10"
+      ]
+    },
+    "pkg:maven/com.squareup.retrofit2/converter-gson@2.11.0": {
+      "package_url": "pkg:maven/com.squareup.retrofit2/converter-gson@2.11.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.squareup.retrofit2/retrofit@2.11.0",
+        "pkg:maven/com.google.code.gson/gson@2.10.1"
+      ]
+    },
+    "pkg:maven/com.google.code.gson/gson@2.10.1": {
+      "package_url": "pkg:maven/com.google.code.gson/gson@2.10.1",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/com.github.package-url/packageurl-java@1.5.0": {
+      "package_url": "pkg:maven/com.github.package-url/packageurl-java@1.5.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/io.freefair.gradle/plugin-utils@8.12.1": {
+      "package_url": "pkg:maven/io.freefair.gradle/plugin-utils@8.12.1",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/io.freefair.gradle/okhttp-plugin@8.12.1": {
+      "package_url": "pkg:maven/io.freefair.gradle/okhttp-plugin@8.12.1",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.squareup.okhttp3/okhttp-bom@4.12.0",
+        "pkg:maven/com.squareup.okhttp3/okhttp@4.12.0",
+        "pkg:maven/com.squareup.okhttp3/logging-interceptor@4.12.0"
+      ]
+    },
+    "pkg:maven/com.squareup.okhttp3/okhttp-bom@4.12.0": {
+      "package_url": "pkg:maven/com.squareup.okhttp3/okhttp-bom@4.12.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/com.squareup.okhttp3/logging-interceptor@4.12.0": {
+      "package_url": "pkg:maven/com.squareup.okhttp3/logging-interceptor@4.12.0",
+      "relationship": "indirect",
+      "scope": "development",
+      "dependencies": [
+        "pkg:maven/com.squareup.okhttp3/okhttp@4.12.0",
+        "pkg:maven/org.jetbrains.kotlin/kotlin-stdlib-jdk8@1.9.10"
+      ]
+    },
+    "pkg:maven/org.projectlombok/lombok@1.18.36": {
+      "package_url": "pkg:maven/org.projectlombok/lombok@1.18.36",
+      "relationship": "direct",
+      "scope": "development",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-thymeleaf@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-thymeleaf@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.thymeleaf/thymeleaf-spring6@3.1.3.RELEASE"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-autoconfigure@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-starter-logging@3.4.2",
+        "pkg:maven/jakarta.annotation/jakarta.annotation-api@2.1.1",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.yaml/snakeyaml@2.3"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-context@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-context@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-aop@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-expression@6.2.2",
+        "pkg:maven/io.micrometer/micrometer-observation@1.14.3"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-aop@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-aop@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-beans@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-beans@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-expression@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-expression@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/io.micrometer/micrometer-observation@1.14.3": {
+      "package_url": "pkg:maven/io.micrometer/micrometer-observation@1.14.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/io.micrometer/micrometer-commons@1.14.3"
+      ]
+    },
+    "pkg:maven/io.micrometer/micrometer-commons@1.14.3": {
+      "package_url": "pkg:maven/io.micrometer/micrometer-commons@1.14.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-autoconfigure@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-autoconfigure@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot@3.4.2"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-logging@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-logging@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/ch.qos.logback/logback-classic@1.5.16",
+        "pkg:maven/org.apache.logging.log4j/log4j-to-slf4j@2.24.3",
+        "pkg:maven/org.slf4j/jul-to-slf4j@2.0.16"
+      ]
+    },
+    "pkg:maven/ch.qos.logback/logback-classic@1.5.16": {
+      "package_url": "pkg:maven/ch.qos.logback/logback-classic@1.5.16",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/ch.qos.logback/logback-core@1.5.16",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/ch.qos.logback/logback-core@1.5.16": {
+      "package_url": "pkg:maven/ch.qos.logback/logback-core@1.5.16",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.slf4j/slf4j-api@2.0.16": {
+      "package_url": "pkg:maven/org.slf4j/slf4j-api@2.0.16",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.apache.logging.log4j/log4j-to-slf4j@2.24.3": {
+      "package_url": "pkg:maven/org.apache.logging.log4j/log4j-to-slf4j@2.24.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.apache.logging.log4j/log4j-api@2.24.3",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.apache.logging.log4j/log4j-api@2.24.3": {
+      "package_url": "pkg:maven/org.apache.logging.log4j/log4j-api@2.24.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.slf4j/jul-to-slf4j@2.0.16": {
+      "package_url": "pkg:maven/org.slf4j/jul-to-slf4j@2.0.16",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/jakarta.annotation/jakarta.annotation-api@2.1.1": {
+      "package_url": "pkg:maven/jakarta.annotation/jakarta.annotation-api@2.1.1",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.yaml/snakeyaml@2.3": {
+      "package_url": "pkg:maven/org.yaml/snakeyaml@2.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.thymeleaf/thymeleaf-spring6@3.1.3.RELEASE": {
+      "package_url": "pkg:maven/org.thymeleaf/thymeleaf-spring6@3.1.3.RELEASE",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.thymeleaf/thymeleaf@3.1.3.RELEASE",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.thymeleaf/thymeleaf@3.1.3.RELEASE": {
+      "package_url": "pkg:maven/org.thymeleaf/thymeleaf@3.1.3.RELEASE",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.attoparser/attoparser@2.0.7.RELEASE",
+        "pkg:maven/org.unbescape/unbescape@1.1.6.RELEASE",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.attoparser/attoparser@2.0.7.RELEASE": {
+      "package_url": "pkg:maven/org.attoparser/attoparser@2.0.7.RELEASE",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.unbescape/unbescape@1.1.6.RELEASE": {
+      "package_url": "pkg:maven/org.unbescape/unbescape@1.1.6.RELEASE",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-data-jdbc@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-data-jdbc@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter-jdbc@3.4.2",
+        "pkg:maven/org.springframework.data/spring-data-jdbc@3.4.2"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-jdbc@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-jdbc@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/com.zaxxer/HikariCP@5.1.0",
+        "pkg:maven/org.springframework/spring-jdbc@6.2.2"
+      ]
+    },
+    "pkg:maven/com.zaxxer/HikariCP@5.1.0": {
+      "package_url": "pkg:maven/com.zaxxer/HikariCP@5.1.0",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-jdbc@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-jdbc@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-tx@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-tx@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-tx@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework.data/spring-data-jdbc@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.data/spring-data-jdbc@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.data/spring-data-relational@3.4.2",
+        "pkg:maven/org.springframework.data/spring-data-commons@3.4.2",
+        "pkg:maven/org.springframework/spring-tx@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-jdbc@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.springframework.data/spring-data-relational@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.data/spring-data-relational@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.data/spring-data-commons@3.4.2",
+        "pkg:maven/org.springframework/spring-tx@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.springframework.data/spring-data-commons@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.data/spring-data-commons@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-data-jpa@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-data-jpa@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-starter-jdbc@3.4.2",
+        "pkg:maven/org.hibernate.orm/hibernate-core@6.6.5.Final",
+        "pkg:maven/org.springframework.data/spring-data-jpa@3.4.2",
+        "pkg:maven/org.springframework/spring-aspects@6.2.2"
+      ]
+    },
+    "pkg:maven/org.hibernate.orm/hibernate-core@6.6.5.Final": {
+      "package_url": "pkg:maven/org.hibernate.orm/hibernate-core@6.6.5.Final",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/jakarta.persistence/jakarta.persistence-api@3.1.0",
+        "pkg:maven/jakarta.transaction/jakarta.transaction-api@2.0.1",
+        "pkg:maven/org.jboss.logging/jboss-logging@3.6.1.Final",
+        "pkg:maven/org.hibernate.common/hibernate-commons-annotations@7.0.3.Final",
+        "pkg:maven/io.smallrye/jandex@3.2.0",
+        "pkg:maven/com.fasterxml/classmate@1.7.0",
+        "pkg:maven/net.bytebuddy/byte-buddy@1.15.11",
+        "pkg:maven/jakarta.xml.bind/jakarta.xml.bind-api@4.0.2",
+        "pkg:maven/org.glassfish.jaxb/jaxb-runtime@4.0.5",
+        "pkg:maven/jakarta.inject/jakarta.inject-api@2.0.1",
+        "pkg:maven/org.antlr/antlr4-runtime@4.13.0"
+      ]
+    },
+    "pkg:maven/jakarta.persistence/jakarta.persistence-api@3.1.0": {
+      "package_url": "pkg:maven/jakarta.persistence/jakarta.persistence-api@3.1.0",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/jakarta.transaction/jakarta.transaction-api@2.0.1": {
+      "package_url": "pkg:maven/jakarta.transaction/jakarta.transaction-api@2.0.1",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.data/spring-data-jpa@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.data/spring-data-jpa@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.data/spring-data-commons@3.4.2",
+        "pkg:maven/org.springframework/spring-orm@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2",
+        "pkg:maven/org.springframework/spring-aop@6.2.2",
+        "pkg:maven/org.springframework/spring-tx@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.antlr/antlr4-runtime@4.13.0",
+        "pkg:maven/jakarta.annotation/jakarta.annotation-api@2.1.1",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-orm@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-orm@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-jdbc@6.2.2",
+        "pkg:maven/org.springframework/spring-tx@6.2.2"
+      ]
+    },
+    "pkg:maven/org.antlr/antlr4-runtime@4.13.0": {
+      "package_url": "pkg:maven/org.antlr/antlr4-runtime@4.13.0",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework/spring-aspects@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-aspects@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.aspectj/aspectjweaver@1.9.22.1"
+      ]
+    },
+    "pkg:maven/org.aspectj/aspectjweaver@1.9.22.1": {
+      "package_url": "pkg:maven/org.aspectj/aspectjweaver@1.9.22.1",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-oauth2-client@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-oauth2-client@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.springframework.security/spring-security-config@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-oauth2-client@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-oauth2-jose@6.4.2"
+      ]
+    },
+    "pkg:maven/org.springframework.security/spring-security-config@6.4.2": {
+      "package_url": "pkg:maven/org.springframework.security/spring-security-config@6.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+        "pkg:maven/org.springframework/spring-aop@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework.security/spring-security-core@6.4.2": {
+      "package_url": "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.security/spring-security-crypto@6.4.2",
+        "pkg:maven/org.springframework/spring-aop@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-expression@6.2.2",
+        "pkg:maven/io.micrometer/micrometer-observation@1.14.3"
+      ]
+    },
+    "pkg:maven/org.springframework.security/spring-security-crypto@6.4.2": {
+      "package_url": "pkg:maven/org.springframework.security/spring-security-crypto@6.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.security/spring-security-oauth2-client@6.4.2": {
+      "package_url": "pkg:maven/org.springframework.security/spring-security-oauth2-client@6.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-oauth2-core@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-web@6.4.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/com.nimbusds/oauth2-oidc-sdk@9.43.4"
+      ]
+    },
+    "pkg:maven/org.springframework.security/spring-security-oauth2-core@6.4.2": {
+      "package_url": "pkg:maven/org.springframework.security/spring-security-oauth2-core@6.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-web@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-web@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-web@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/io.micrometer/micrometer-observation@1.14.3"
+      ]
+    },
+    "pkg:maven/org.springframework.security/spring-security-web@6.4.2": {
+      "package_url": "pkg:maven/org.springframework.security/spring-security-web@6.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-aop@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2",
+        "pkg:maven/org.springframework/spring-expression@6.2.2",
+        "pkg:maven/org.springframework/spring-web@6.2.2"
+      ]
+    },
+    "pkg:maven/com.nimbusds/oauth2-oidc-sdk@9.43.4": {
+      "package_url": "pkg:maven/com.nimbusds/oauth2-oidc-sdk@9.43.4",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.github.stephenc.jcip/jcip-annotations@1.0-1",
+        "pkg:maven/com.nimbusds/content-type@2.2",
+        "pkg:maven/net.minidev/json-smart@2.5.1",
+        "pkg:maven/com.nimbusds/lang-tag@1.7",
+        "pkg:maven/com.nimbusds/nimbus-jose-jwt@9.37.3"
+      ]
+    },
+    "pkg:maven/com.github.stephenc.jcip/jcip-annotations@1.0-1": {
+      "package_url": "pkg:maven/com.github.stephenc.jcip/jcip-annotations@1.0-1",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/com.nimbusds/content-type@2.2": {
+      "package_url": "pkg:maven/com.nimbusds/content-type@2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/net.minidev/json-smart@2.5.1": {
+      "package_url": "pkg:maven/net.minidev/json-smart@2.5.1",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/net.minidev/accessors-smart@2.5.1"
+      ]
+    },
+    "pkg:maven/net.minidev/accessors-smart@2.5.1": {
+      "package_url": "pkg:maven/net.minidev/accessors-smart@2.5.1",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.ow2.asm/asm@9.6"
+      ]
+    },
+    "pkg:maven/org.ow2.asm/asm@9.6": {
+      "package_url": "pkg:maven/org.ow2.asm/asm@9.6",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/com.nimbusds/lang-tag@1.7": {
+      "package_url": "pkg:maven/com.nimbusds/lang-tag@1.7",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/com.nimbusds/nimbus-jose-jwt@9.37.3": {
+      "package_url": "pkg:maven/com.nimbusds/nimbus-jose-jwt@9.37.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.github.stephenc.jcip/jcip-annotations@1.0-1"
+      ]
+    },
+    "pkg:maven/org.springframework.security/spring-security-oauth2-jose@6.4.2": {
+      "package_url": "pkg:maven/org.springframework.security/spring-security-oauth2-jose@6.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-oauth2-core@6.4.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/com.nimbusds/nimbus-jose-jwt@9.37.3"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-oauth2-resource-server@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-oauth2-resource-server@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.springframework.security/spring-security-config@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-oauth2-resource-server@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-oauth2-jose@6.4.2"
+      ]
+    },
+    "pkg:maven/org.springframework.security/spring-security-oauth2-resource-server@6.4.2": {
+      "package_url": "pkg:maven/org.springframework.security/spring-security-oauth2-resource-server@6.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.security/spring-security-core@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-oauth2-core@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-web@6.4.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-validation@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-validation@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.apache.tomcat.embed/tomcat-embed-el@10.1.34",
+        "pkg:maven/org.hibernate.validator/hibernate-validator@8.0.2.Final"
+      ]
+    },
+    "pkg:maven/org.apache.tomcat.embed/tomcat-embed-el@10.1.34": {
+      "package_url": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-el@10.1.34",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.hibernate.validator/hibernate-validator@8.0.2.Final": {
+      "package_url": "pkg:maven/org.hibernate.validator/hibernate-validator@8.0.2.Final",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/jakarta.validation/jakarta.validation-api@3.0.2",
+        "pkg:maven/org.jboss.logging/jboss-logging@3.6.1.Final",
+        "pkg:maven/com.fasterxml/classmate@1.7.0"
+      ]
+    },
+    "pkg:maven/jakarta.validation/jakarta.validation-api@3.0.2": {
+      "package_url": "pkg:maven/jakarta.validation/jakarta.validation-api@3.0.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.jboss.logging/jboss-logging@3.6.1.Final": {
+      "package_url": "pkg:maven/org.jboss.logging/jboss-logging@3.6.1.Final",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/com.fasterxml/classmate@1.7.0": {
+      "package_url": "pkg:maven/com.fasterxml/classmate@1.7.0",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-security@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-security@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.springframework/spring-aop@6.2.2",
+        "pkg:maven/org.springframework.security/spring-security-config@6.4.2",
+        "pkg:maven/org.springframework.security/spring-security-web@6.4.2"
+      ]
+    },
+    "pkg:maven/org.thymeleaf.extras/thymeleaf-extras-springsecurity6@3.1.3.RELEASE": {
+      "package_url": "pkg:maven/org.thymeleaf.extras/thymeleaf-extras-springsecurity6@3.1.3.RELEASE",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.thymeleaf/thymeleaf-spring6@3.1.3.RELEASE",
+        "pkg:maven/org.slf4j/slf4j-api@2.0.16"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-web@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-web@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-starter-json@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-starter-tomcat@3.4.2",
+        "pkg:maven/org.springframework/spring-web@6.2.2",
+        "pkg:maven/org.springframework/spring-webmvc@6.2.2"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-json@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-json@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.springframework/spring-web@6.2.2",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.4",
+        "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jdk8@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jsr310@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.module/jackson-module-parameter-names@2.18.2"
+      ]
+    },
+    "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.4": {
+      "package_url": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.4",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.18.2",
+        "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2"
+      ]
+    },
+    "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jdk8@2.18.2": {
+      "package_url": "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jdk8@2.18.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.4",
+        "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2"
+      ]
+    },
+    "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jsr310@2.18.2": {
+      "package_url": "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jsr310@2.18.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-annotations@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-core@2.18.2",
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.4",
+        "pkg:maven/com.fasterxml.jackson/jackson-bom@2.18.2"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-tomcat@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-tomcat@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/jakarta.annotation/jakarta.annotation-api@2.1.1",
+        "pkg:maven/org.apache.tomcat.embed/tomcat-embed-core@10.1.34",
+        "pkg:maven/org.apache.tomcat.embed/tomcat-embed-el@10.1.34",
+        "pkg:maven/org.apache.tomcat.embed/tomcat-embed-websocket@10.1.34"
+      ]
+    },
+    "pkg:maven/org.apache.tomcat.embed/tomcat-embed-core@10.1.34": {
+      "package_url": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-core@10.1.34",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.apache.tomcat.embed/tomcat-embed-websocket@10.1.34": {
+      "package_url": "pkg:maven/org.apache.tomcat.embed/tomcat-embed-websocket@10.1.34",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.apache.tomcat.embed/tomcat-embed-core@10.1.34"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-webmvc@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-webmvc@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-aop@6.2.2",
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2",
+        "pkg:maven/org.springframework/spring-expression@6.2.2",
+        "pkg:maven/org.springframework/spring-web@6.2.2"
+      ]
+    },
+    "pkg:maven/com.auth0/java-jwt@3.18.2": {
+      "package_url": "pkg:maven/com.auth0/java-jwt@3.18.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.4"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-actuator@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-actuator@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-actuator-autoconfigure@3.4.2",
+        "pkg:maven/io.micrometer/micrometer-observation@1.14.3",
+        "pkg:maven/io.micrometer/micrometer-jakarta9@1.14.3"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-actuator-autoconfigure@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-actuator-autoconfigure@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.4",
+        "pkg:maven/com.fasterxml.jackson.datatype/jackson-datatype-jsr310@2.18.2",
+        "pkg:maven/org.springframework.boot/spring-boot-actuator@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-autoconfigure@3.4.2"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-actuator@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-actuator@3.4.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot@3.4.2"
+      ]
+    },
+    "pkg:maven/io.micrometer/micrometer-jakarta9@1.14.3": {
+      "package_url": "pkg:maven/io.micrometer/micrometer-jakarta9@1.14.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/io.micrometer/micrometer-core@1.14.3",
+        "pkg:maven/io.micrometer/micrometer-commons@1.14.3",
+        "pkg:maven/io.micrometer/micrometer-observation@1.14.3"
+      ]
+    },
+    "pkg:maven/io.micrometer/micrometer-core@1.14.3": {
+      "package_url": "pkg:maven/io.micrometer/micrometer-core@1.14.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/io.micrometer/micrometer-commons@1.14.3",
+        "pkg:maven/io.micrometer/micrometer-observation@1.14.3",
+        "pkg:maven/org.hdrhistogram/HdrHistogram@2.2.2",
+        "pkg:maven/org.latencyutils/LatencyUtils@2.0.3"
+      ]
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-starter-mail@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-starter-mail@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot-starter@3.4.2",
+        "pkg:maven/org.springframework/spring-context-support@6.2.2",
+        "pkg:maven/org.eclipse.angus/jakarta.mail@2.0.3"
+      ]
+    },
+    "pkg:maven/org.springframework/spring-context-support@6.2.2": {
+      "package_url": "pkg:maven/org.springframework/spring-context-support@6.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework/spring-beans@6.2.2",
+        "pkg:maven/org.springframework/spring-context@6.2.2",
+        "pkg:maven/org.springframework/spring-core@6.2.2"
+      ]
+    },
+    "pkg:maven/org.eclipse.angus/jakarta.mail@2.0.3": {
+      "package_url": "pkg:maven/org.eclipse.angus/jakarta.mail@2.0.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/jakarta.activation/jakarta.activation-api@2.1.3",
+        "pkg:maven/org.eclipse.angus/angus-activation@2.0.2"
+      ]
+    },
+    "pkg:maven/jakarta.activation/jakarta.activation-api@2.1.3": {
+      "package_url": "pkg:maven/jakarta.activation/jakarta.activation-api@2.1.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/mysql/mysql-connector-java@8.0.33": {
+      "package_url": "pkg:maven/mysql/mysql-connector-java@8.0.33",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/com.mysql/mysql-connector-j@9.1.0"
+      ]
+    },
+    "pkg:maven/com.mysql/mysql-connector-j@9.1.0": {
+      "package_url": "pkg:maven/com.mysql/mysql-connector-j@9.1.0",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/com.googlecode.json-simple/json-simple@1.1.1": {
+      "package_url": "pkg:maven/com.googlecode.json-simple/json-simple@1.1.1",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/junit/junit@4.13.2"
+      ]
+    },
+    "pkg:maven/junit/junit@4.13.2": {
+      "package_url": "pkg:maven/junit/junit@4.13.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.hamcrest/hamcrest-core@2.2"
+      ]
+    },
+    "pkg:maven/org.hamcrest/hamcrest-core@2.2": {
+      "package_url": "pkg:maven/org.hamcrest/hamcrest-core@2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.hamcrest/hamcrest@2.2"
+      ]
+    },
+    "pkg:maven/org.hamcrest/hamcrest@2.2": {
+      "package_url": "pkg:maven/org.hamcrest/hamcrest@2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.springframework.boot/spring-boot-devtools@3.4.2": {
+      "package_url": "pkg:maven/org.springframework.boot/spring-boot-devtools@3.4.2",
+      "relationship": "direct",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.springframework.boot/spring-boot@3.4.2",
+        "pkg:maven/org.springframework.boot/spring-boot-autoconfigure@3.4.2"
+      ]
+    },
+    "pkg:maven/org.hibernate.common/hibernate-commons-annotations@7.0.3.Final": {
+      "package_url": "pkg:maven/org.hibernate.common/hibernate-commons-annotations@7.0.3.Final",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/io.smallrye/jandex@3.2.0": {
+      "package_url": "pkg:maven/io.smallrye/jandex@3.2.0",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/net.bytebuddy/byte-buddy@1.15.11": {
+      "package_url": "pkg:maven/net.bytebuddy/byte-buddy@1.15.11",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/jakarta.xml.bind/jakarta.xml.bind-api@4.0.2": {
+      "package_url": "pkg:maven/jakarta.xml.bind/jakarta.xml.bind-api@4.0.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/jakarta.activation/jakarta.activation-api@2.1.3"
+      ]
+    },
+    "pkg:maven/org.glassfish.jaxb/jaxb-runtime@4.0.5": {
+      "package_url": "pkg:maven/org.glassfish.jaxb/jaxb-runtime@4.0.5",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/org.glassfish.jaxb/jaxb-core@4.0.5"
+      ]
+    },
+    "pkg:maven/org.glassfish.jaxb/jaxb-core@4.0.5": {
+      "package_url": "pkg:maven/org.glassfish.jaxb/jaxb-core@4.0.5",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/jakarta.xml.bind/jakarta.xml.bind-api@4.0.2",
+        "pkg:maven/jakarta.activation/jakarta.activation-api@2.1.3",
+        "pkg:maven/org.eclipse.angus/angus-activation@2.0.2",
+        "pkg:maven/org.glassfish.jaxb/txw2@4.0.5",
+        "pkg:maven/com.sun.istack/istack-commons-runtime@4.1.2"
+      ]
+    },
+    "pkg:maven/org.eclipse.angus/angus-activation@2.0.2": {
+      "package_url": "pkg:maven/org.eclipse.angus/angus-activation@2.0.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": [
+        "pkg:maven/jakarta.activation/jakarta.activation-api@2.1.3"
+      ]
+    },
+    "pkg:maven/org.glassfish.jaxb/txw2@4.0.5": {
+      "package_url": "pkg:maven/org.glassfish.jaxb/txw2@4.0.5",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/com.sun.istack/istack-commons-runtime@4.1.2": {
+      "package_url": "pkg:maven/com.sun.istack/istack-commons-runtime@4.1.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/jakarta.inject/jakarta.inject-api@2.0.1": {
+      "package_url": "pkg:maven/jakarta.inject/jakarta.inject-api@2.0.1",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.hdrhistogram/HdrHistogram@2.2.2": {
+      "package_url": "pkg:maven/org.hdrhistogram/HdrHistogram@2.2.2",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    },
+    "pkg:maven/org.latencyutils/LatencyUtils@2.0.3": {
+      "package_url": "pkg:maven/org.latencyutils/LatencyUtils@2.0.3",
+      "relationship": "indirect",
+      "scope": "runtime",
+      "dependencies": []
+    }
+  }
+}
