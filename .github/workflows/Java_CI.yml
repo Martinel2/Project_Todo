@@ -55,3 +55,10 @@ jobs:
         DB_PASSWORD: "testpassworD"
       run: |
         cd todo && ./gradlew test
+
+    
+    - name: 테스트 결과를 PR에 코멘트로 등록
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        files: '**/build/test-results/test/TEST-*.xml'
