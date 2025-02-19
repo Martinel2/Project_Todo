@@ -27,20 +27,18 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
 
-    # MySQL 클라이언트를 설치하는 과정 제거
-
+    - uses: mirromutth/mysql-action@v1.1
+      with:
+        host port: 3800 # Optional, default value is 3306. The port of host
+        container port: 3306 # Optional, default value is 3306. The port of container
+        mysql database: 'todo' # Optional, default value is "test". The specified database which will be create
+        mysql root password: '0000' # Required if "mysql user" is empty, default is empty. The root superuser password
+       
     # 충분한 대기 시간을 추가하여 MySQL 서버가 준비되도록 함
     - name: Wait for MySQL to be ready
-      run: sleep 30
+      run: sleep 10
 
-    # MySQL 연결 확인
-    - name: Check MySQL connection
-      run: |
-        mysql -h 127.0.0.1 -u root -p0000 -e "SHOW DATABASES;"  # 'mysql' 대신 '127.0.0.1' 사용
-
-    - name: Check MySQL port 3306
-      run: telnet localhost 3306
-
+    
     - name: Grant execute permission for gradlew
       run: cd todo && chmod +x gradlew
 
