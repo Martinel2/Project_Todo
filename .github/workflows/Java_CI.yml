@@ -19,6 +19,8 @@ jobs:
           MYSQL_PASSWORD: testpass  # 일반 사용자 비밀번호
         ports:
           - 3306:3306  # 포트 매핑
+        options: --health-cmd="mysqladmin ping -h 127.0.0.1 --silent" --health-interval=10s --health-timeout=5s --health-retries=3
+
 
     steps:
     - uses: actions/checkout@v4
@@ -46,7 +48,7 @@ jobs:
     # MySQL 연결 확인
     - name: Check MySQL connection
       run: |
-        mysql -h 127.0.0.1 -u root -p0000  # 'mysql' 대신 '127.0.0.1' 사용
+        mysql -h 127.0.0.1 -u testuser -ptestpass  # 'mysql' 대신 '127.0.0.1' 사용
 
     - name: Check MySQL port 3306
       run: telnet localhost 3306
@@ -58,5 +60,9 @@ jobs:
       run: cd todo && ./gradlew dependencies
 
     - name: Run tests
-      working-directory: todo
-      run: ./gradlew test
+      env:
+        DATABASE_URL: "jdbc:mysql://127.0.0.1:3306/todo?useSSL=false&allowPublicKeyRetrieval=true"
+        DB_USERNAME: "testuser"
+        DB_PASSWORD: "testpass"
+      run: |
+        ./gradlew test
