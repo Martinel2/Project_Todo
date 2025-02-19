@@ -31,7 +31,6 @@ jobs:
       
 
     # MySQL 서버를 로컬에서 사용할 수 있도록 환경변수 설정
-    steps:
     - uses: samin/mysql-action@v1
       with:
         host port: 3800 # Optional, default value is 3306. The port of host
