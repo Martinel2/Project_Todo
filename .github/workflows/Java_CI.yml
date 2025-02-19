@@ -26,6 +26,9 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
+    
+    - name: Shutdown Ubuntu MySQL (SUDO)
+      run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
 
     - uses: mirromutth/mysql-action@v1.1
       with:
@@ -38,7 +41,14 @@ jobs:
     - name: Wait for MySQL to be ready
       run: sleep 10
 
-    
+    # MySQL 연결 확인
+    - name: Check MySQL connection
+      run: |
+        mysql -h 127.0.0.1 -u root -p0000  # 'mysql' 대신 '127.0.0.1' 사용
+
+    - name: Check MySQL port 3306
+      run: telnet localhost 3306
+
     - name: Grant execute permission for gradlew
       run: cd todo && chmod +x gradlew
 
