@@ -14,13 +14,12 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: 0000  # root 비밀번호 설정
-          MYSQL_DATABASE: testdb  # 사용할 데이터베이스
+          MYSQL_DATABASE: todo  # 사용할 데이터베이스
           MYSQL_USER: testuser  # 일반 사용자 생성
           MYSQL_PASSWORD: testpass  # 일반 사용자 비밀번호
         ports:
           - 3306:3306  # 포트 매핑
         options: --health-cmd="mysqladmin ping -h 127.0.0.1 --silent" --health-interval=10s --health-timeout=5s --health-retries=3
-
 
     steps:
     - uses: actions/checkout@v4
@@ -30,16 +29,6 @@ jobs:
       with:
         java-version: '17'
         distribution: 'adopt'
-    
-    - name: Shutdown Ubuntu MySQL (SUDO)
-      run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
-
-    - uses: mirromutth/mysql-action@v1.1
-      with:
-        host port: 3800 # Optional, default value is 3306. The port of host
-        container port: 3306 # Optional, default value is 3306. The port of container
-        mysql database: 'todo' # Optional, default value is "test". The specified database which will be create
-        mysql root password: '0000' # Required if "mysql user" is empty, default is empty. The root superuser password
        
     # 충분한 대기 시간을 추가하여 MySQL 서버가 준비되도록 함
     - name: Wait for MySQL to be ready
