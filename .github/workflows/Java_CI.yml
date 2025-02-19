@@ -14,6 +14,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: 0000  # 설정한 비밀번호
+          MYSQL_ROOT_HOST: '%'  # 모든 호스트에서 접근 가능하도록 설정
         ports:
           - 3306:3306  # 포트 매핑
 
