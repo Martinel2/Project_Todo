@@ -39,7 +39,7 @@ jobs:
           mysql password: '0000'
           
     - name: Check MySQL connection
-      run: mysql -h 127.0.0.1 -u root -prootpassword -e "SHOW DATABASES;"
+      run: sudo systemctl start mysql && mysql -h 127.0.0.1 -u root -prootpassword -e "SHOW DATABASES;"
         
     - name: Check MySQL port 3306
       run: telnet localhost 3306
