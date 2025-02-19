@@ -28,11 +28,14 @@ jobs:
 
     # MySQL 클라이언트를 설치하는 과정 제거
 
+    # 충분한 대기 시간을 추가하여 MySQL 서버가 준비되도록 함
+    - name: Wait for MySQL to be ready
+      run: sleep 30
+
     # MySQL 연결 확인
     - name: Check MySQL connection
       run: |
-        sleep 30  # 충분한 대기 시간 추가
-        mysql -h mysql -u root -p0000 -e "SHOW DATABASES;"  # 'mysql' 서비스 이름을 사용하여 연결
+        mysql -h 127.0.0.1 -u root -p0000 -e "SHOW DATABASES;"  # 'mysql' 대신 '127.0.0.1' 사용
 
     - name: Check MySQL port 3306
       run: telnet localhost 3306
@@ -42,9 +45,6 @@ jobs:
 
     - name: Install dependencies
       run: cd todo && ./gradlew dependencies
-
-    - name: Wait for MySQL to be ready
-      run: sleep 10s
 
     - name: Run tests
       working-directory: todo
