@@ -50,6 +50,5 @@ public class OAuth2ServiceTest {
         assertEquals("newUser", savedUser.getUsername());
         assertEquals("newUser@example.com", savedUser.getEmail());
     }
-
 }
 
