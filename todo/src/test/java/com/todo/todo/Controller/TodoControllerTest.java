@@ -78,10 +78,6 @@ public class TodoControllerTest {
 
     @Test
     void testUpdateTodo() throws Exception {
-        // Given
-        TodoDTO todoDTO = new TodoDTO(1L, "Updated Todo");
-        when(todoService.updateTodo(any(TodoDTO.class))).thenReturn(true);
-
         // When & Then
         mockMvc.perform(post("/api/todos/update")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -92,10 +88,6 @@ public class TodoControllerTest {
 
     @Test
     void testGetTodos() throws Exception {
-        // Given
-        List<TodoDTO> todos = Arrays.asList(new TodoDTO(1L, "Test Todo"));
-        when(todoService.getTodosByUser(anyString(), anyString())).thenReturn(todos);
-
         // When & Then
         mockMvc.perform(get("/api/todos/user")
                         .param("email", "test@example.com")
@@ -106,10 +98,6 @@ public class TodoControllerTest {
 
     @Test
     void testDeleteTodo() throws Exception {
-        // Given
-        Long todoId = 1L;
-        when(todoService.deleteTodo(todoId)).thenReturn(true);
-
         // When & Then
         mockMvc.perform(post("/api/todos/delete")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -120,10 +108,6 @@ public class TodoControllerTest {
 
     @Test
     void testDeleteTodoNotFound() throws Exception {
-        // Given
-        Long todoId = 1L;
-        when(todoService.deleteTodo(todoId)).thenReturn(false);
-
         // When & Then
         mockMvc.perform(post("/api/todos/delete")
                         .contentType(MediaType.APPLICATION_JSON)

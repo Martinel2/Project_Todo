@@ -13,10 +13,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
@@ -55,6 +56,23 @@ class TodoServiceTest {
         assertNotNull(todo);
         assertEquals(task, todo.getTitle());
         assertEquals(user, todo.getUser());
+    }
+
+    @Test
+    void testCreateTodo_Exception() {
+        String email = "user@example.com";
+        String provider = "google";
+        String task = "Complete the task";
+
+        //No user
+
+        //Create Todo
+        TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
+        todoCreateDTO.setProvider(provider);
+        todoCreateDTO.setEmail(email);
+        todoCreateDTO.setTask(task);
+
+        assertThrows(IllegalArgumentException.class, ()-> todoService.createTodo(todoCreateDTO));
     }
 
     @Test
@@ -122,6 +140,22 @@ class TodoServiceTest {
     }
 
     @Test
+    void testUpdateTodo_ShouldThrowException_WhenTodoNotFound() {
+        // Given
+        long invalidId = 999L;
+
+        TodoDTO todoDTO = new TodoDTO();
+        todoDTO.setId(invalidId);
+        todoDTO.setContent("Exception");
+
+        // When & Then
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> todoService.updateTodo(todoDTO));
+
+        assertEquals("Todo item not found with id: 999", exception.getMessage());
+    }
+
+    @Test
     void testDelete() {
         String email = "user@example.com";
         String provider = "google";
@@ -153,4 +187,17 @@ class TodoServiceTest {
         assertTrue(!todos.stream().anyMatch(t -> t.getContent().equals("Task 1")));
         assertTrue(todos.stream().anyMatch(t -> t.getContent().equals("Task 2")));
     }
+
+    @Test
+    void testDeleteTodo_ShouldThrowException_WhenTodoNotFound() {
+        // Given
+        long invalidId = 999L;
+
+        // When & Then
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> todoService.deleteTodo(invalidId));
+
+        assertEquals("Todo item not found with id: 999", exception.getMessage());
+    }
+
 }
