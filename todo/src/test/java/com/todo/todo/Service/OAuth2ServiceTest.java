@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -50,5 +51,20 @@ public class OAuth2ServiceTest {
         assertEquals("newUser", savedUser.getUsername());
         assertEquals("newUser@example.com", savedUser.getEmail());
     }
+
+    @Test
+    void testUpdateOrSaveUser_ShouldThrowException_WhenUserRepositoryReturnsNull() {
+        // Given
+        UserProfile userProfile = new UserProfile();
+        userProfile.setEmail("test@example.com");
+        userProfile.setProvider("google");
+
+        when(userRepository.findUserByEmailAndProvider(anyString(), anyString()))
+                .thenReturn(null); // ❌ Optional.empty()가 아닌 null 반환
+
+        // When & Then
+        assertThrows(NullPointerException.class, () -> oAuth2Service.updateOrSaveUser(userProfile));
+    }
+
 }
 

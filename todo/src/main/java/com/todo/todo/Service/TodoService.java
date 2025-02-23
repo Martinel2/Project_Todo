@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,49 +21,38 @@ public class TodoService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<TodoDTO> getTodosByUser(String email, String provider) {
+    public List<TodoDTO> getTodosByUser(String email, String provider) throws IllegalArgumentException{
         List<Todo> todos = todoRepository.findByUserEmailAndUserProvider(email, provider);
         return todos.stream().map(TodoDTO::new).collect(Collectors.toList());
     }
 
-
     public Todo createTodo(TodoCreateDTO todoCreateDTO) {
-        User user = userRepository.findUserByEmailAndProvider(todoCreateDTO.getEmail(), todoCreateDTO.getProvider()).orElse(null);
-        if (user != null) {
-            Todo todo = new Todo();
-            todo.setTitle(todoCreateDTO.getTask());
-            todo.setUser(user);
-            return todoRepository.save(todo);
-        }
-        return null; // or throw exception
+        //NullPointerException은 예상치못한 예외에서 사용하는 것
+        User user = userRepository.findUserByEmailAndProvider(todoCreateDTO.getEmail(), todoCreateDTO.getProvider())
+                .orElseThrow(() -> new IllegalArgumentException("User not found with email: " + todoCreateDTO.getEmail()));
+
+        Todo todo = new Todo();
+        todo.setTitle(todoCreateDTO.getContent());
+        todo.setUser(user);
+        return todoRepository.save(todo);
     }
 
-    public boolean updateTodo(TodoDTO todoDTO) {
-        Optional<Todo> todo = todoRepository.findById(todoDTO.getId());  // id로 Todo 조회
-        if (todo.isPresent()) {
-            Todo upTodo = todo.get();
-            upTodo.setTitle(todoDTO.getContent());
-            // save() 메소드가 반환하는 객체와 비교하지 말고, 예외가 발생하지 않도록 처리
-            try {
-                todoRepository.save(upTodo);  // 데이터베이스에 업데이트
-                return true;  // 저장이 성공하면 true 반환
-            } catch (Exception e) {
-                return false;  // 예외가 발생하면 false 반환
-            }
-        }
-        return false;  // id로 Todo를 찾을 수 없으면 false 반환
+    public void updateTodo(TodoDTO todoDTO) throws IllegalArgumentException{
+        Todo todo = todoRepository.findById(todoDTO.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Todo item not found with id: " + todoDTO.getId()));
+
+        todo.setTitle(todoDTO.getContent());
+        todoRepository.save(todo);  // 예외 발생 시 컨트롤러에서 처리
     }
 
 
+    public void deleteTodo(long id) throws IllegalArgumentException{
+        Todo todo = todoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Todo item not found with id: " + id));
 
-    public boolean deleteTodo(long id){
-        Optional<Todo> todo = todoRepository.findById(id);  // id로 Todo 조회
-        if (todo.isPresent()) {
-            todoRepository.delete(todo.get());  // Todo 삭제
-            return true;
-        }
-        return false;
+        todoRepository.delete(todo);  // Todo 삭제
     }
+
 
     public List<Todo> findAll(){
         return todoRepository.findAll();

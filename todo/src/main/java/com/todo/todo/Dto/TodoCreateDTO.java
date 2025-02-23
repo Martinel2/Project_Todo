@@ -8,5 +8,5 @@ import lombok.Setter;
 public class TodoCreateDTO {
     String email;
     String provider;
-    String task;
+    String content;
 }

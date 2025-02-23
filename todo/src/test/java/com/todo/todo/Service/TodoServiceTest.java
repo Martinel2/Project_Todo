@@ -13,10 +13,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
@@ -48,13 +49,30 @@ class TodoServiceTest {
         TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
         todoCreateDTO.setProvider(provider);
         todoCreateDTO.setEmail(email);
-        todoCreateDTO.setTask(task);
+        todoCreateDTO.setContent(task);
 
         Todo todo = todoService.createTodo(todoCreateDTO);
 
         assertNotNull(todo);
         assertEquals(task, todo.getTitle());
         assertEquals(user, todo.getUser());
+    }
+
+    @Test
+    void testCreateTodo_Exception() {
+        String email = "user@example.com";
+        String provider = "google";
+        String task = "Complete the task";
+
+        //No user
+
+        //Create Todo
+        TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
+        todoCreateDTO.setProvider(provider);
+        todoCreateDTO.setEmail(email);
+        todoCreateDTO.setContent(task);
+
+        assertThrows(IllegalArgumentException.class, ()-> todoService.createTodo(todoCreateDTO));
     }
 
     @Test
@@ -71,14 +89,14 @@ class TodoServiceTest {
 
         // Add todos for the user
         TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
-        todoCreateDTO.setTask("Task 1");
+        todoCreateDTO.setContent("Task 1");
         todoCreateDTO.setProvider(provider);
         todoCreateDTO.setEmail(email);
         todoService.createTodo(todoCreateDTO);
 
 
         TodoCreateDTO todoCreateDTO2 = new TodoCreateDTO();
-        todoCreateDTO2.setTask("Task 2");
+        todoCreateDTO2.setContent("Task 2");
         todoCreateDTO2.setProvider(provider);
         todoCreateDTO2.setEmail(email);
         todoService.createTodo(todoCreateDTO2);
@@ -122,6 +140,22 @@ class TodoServiceTest {
     }
 
     @Test
+    void testUpdateTodo_ShouldThrowException_WhenTodoNotFound() {
+        // Given
+        long invalidId = 999L;
+
+        TodoDTO todoDTO = new TodoDTO();
+        todoDTO.setId(invalidId);
+        todoDTO.setContent("Exception");
+
+        // When & Then
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> todoService.updateTodo(todoDTO));
+
+        assertEquals("Todo item not found with id: 999", exception.getMessage());
+    }
+
+    @Test
     void testDelete() {
         String email = "user@example.com";
         String provider = "google";
@@ -153,4 +187,17 @@ class TodoServiceTest {
         assertTrue(!todos.stream().anyMatch(t -> t.getContent().equals("Task 1")));
         assertTrue(todos.stream().anyMatch(t -> t.getContent().equals("Task 2")));
     }
+
+    @Test
+    void testDeleteTodo_ShouldThrowException_WhenTodoNotFound() {
+        // Given
+        long invalidId = 999L;
+
+        // When & Then
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> todoService.deleteTodo(invalidId));
+
+        assertEquals("Todo item not found with id: 999", exception.getMessage());
+    }
+
 }
