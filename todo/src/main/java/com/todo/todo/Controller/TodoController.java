@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public class TodoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(todo); // 예외 발생 시 자동 처리
     }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     public ResponseEntity<String> updateTodo(@RequestBody TodoDTO todoDTO) {
         todoService.updateTodo(todoDTO);
         return ResponseEntity.ok("Todo item successfully updated");  // 성공 시 OK 응답
@@ -36,7 +37,8 @@ public class TodoController {
 
     @GetMapping("/user")
     public ResponseEntity<List<TodoDTO>> getTodos(@RequestParam String email, @RequestParam String provider) {
-        List<TodoDTO> todos = todoService.getTodosByUser(email, provider);
+        List<TodoDTO> todos = new ArrayList<>();
+        if(todoService.getTodosByUser(email, provider) != null) todos = todoService.getTodosByUser(email, provider);
         return ResponseEntity.ok(todos);
     }
 

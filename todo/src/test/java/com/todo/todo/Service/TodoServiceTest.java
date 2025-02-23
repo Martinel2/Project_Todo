@@ -49,7 +49,7 @@ class TodoServiceTest {
         TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
         todoCreateDTO.setProvider(provider);
         todoCreateDTO.setEmail(email);
-        todoCreateDTO.setTask(task);
+        todoCreateDTO.setContent(task);
 
         Todo todo = todoService.createTodo(todoCreateDTO);
 
@@ -70,7 +70,7 @@ class TodoServiceTest {
         TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
         todoCreateDTO.setProvider(provider);
         todoCreateDTO.setEmail(email);
-        todoCreateDTO.setTask(task);
+        todoCreateDTO.setContent(task);
 
         assertThrows(IllegalArgumentException.class, ()-> todoService.createTodo(todoCreateDTO));
     }
@@ -89,14 +89,14 @@ class TodoServiceTest {
 
         // Add todos for the user
         TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
-        todoCreateDTO.setTask("Task 1");
+        todoCreateDTO.setContent("Task 1");
         todoCreateDTO.setProvider(provider);
         todoCreateDTO.setEmail(email);
         todoService.createTodo(todoCreateDTO);
 
 
         TodoCreateDTO todoCreateDTO2 = new TodoCreateDTO();
-        todoCreateDTO2.setTask("Task 2");
+        todoCreateDTO2.setContent("Task 2");
         todoCreateDTO2.setProvider(provider);
         todoCreateDTO2.setEmail(email);
         todoService.createTodo(todoCreateDTO2);

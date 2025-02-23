@@ -21,7 +21,7 @@ public class TodoService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<TodoDTO> getTodosByUser(String email, String provider) {
+    public List<TodoDTO> getTodosByUser(String email, String provider) throws IllegalArgumentException{
         List<Todo> todos = todoRepository.findByUserEmailAndUserProvider(email, provider);
         return todos.stream().map(TodoDTO::new).collect(Collectors.toList());
     }
@@ -32,12 +32,12 @@ public class TodoService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found with email: " + todoCreateDTO.getEmail()));
 
         Todo todo = new Todo();
-        todo.setTitle(todoCreateDTO.getTask());
+        todo.setTitle(todoCreateDTO.getContent());
         todo.setUser(user);
         return todoRepository.save(todo);
     }
 
-    public void updateTodo(TodoDTO todoDTO) {
+    public void updateTodo(TodoDTO todoDTO) throws IllegalArgumentException{
         Todo todo = todoRepository.findById(todoDTO.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Todo item not found with id: " + todoDTO.getId()));
 
@@ -46,7 +46,7 @@ public class TodoService {
     }
 
 
-    public void deleteTodo(long id) {
+    public void deleteTodo(long id) throws IllegalArgumentException{
         Todo todo = todoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Todo item not found with id: " + id));
 
