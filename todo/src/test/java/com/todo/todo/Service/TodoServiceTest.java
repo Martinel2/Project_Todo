@@ -7,17 +7,17 @@ import com.todo.todo.Entity.User;
 import com.todo.todo.Repository.TodoRepository;
 import com.todo.todo.Repository.UserRepository;
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.when;
+
 
 
 @SpringBootTest
@@ -33,18 +33,26 @@ class TodoServiceTest {
     @Autowired
     private TodoRepository todoRepository;
 
+    private User user;
+
+    @BeforeEach
+    void setup(){
+        String email = "user@example.com";
+        String provider = "google";
+
+        // Setup test user
+        user = new User();
+        user.setUsername("TestUser");
+        user.setEmail(email);
+        user.setProvider(provider);
+        userRepository.save(user);
+    }
+
     @Test
     void testCreateTodoForUser() {
         String email = "user@example.com";
         String provider = "google";
         String task = "Complete the task";
-
-        // Setup test user
-        User user = new User();
-        user.setUsername("TestUser");
-        user.setEmail(email);
-        user.setProvider(provider);
-        userRepository.save(user);
 
         TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
         todoCreateDTO.setProvider(provider);
@@ -60,11 +68,11 @@ class TodoServiceTest {
 
     @Test
     void testCreateTodo_Exception() {
-        String email = "user@example.com";
+
+        //No exist user
+        String email = "noexist@example.com";
         String provider = "google";
         String task = "Complete the task";
-
-        //No user
 
         //Create Todo
         TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
@@ -79,13 +87,6 @@ class TodoServiceTest {
     void testGetTodosByUser() {
         String email = "user@example.com";
         String provider = "google";
-
-        // Setup test user
-        User user = new User();
-        user.setUsername("TestUser");
-        user.setEmail(email);
-        user.setProvider(provider);
-        userRepository.save(user);
 
         // Add todos for the user
         TodoCreateDTO todoCreateDTO = new TodoCreateDTO();
@@ -114,13 +115,6 @@ class TodoServiceTest {
         String email = "user@example.com";
         String provider = "google";
 
-        // Setup test user
-        User user = new User();
-        user.setUsername("TestUser");
-        user.setEmail(email);
-        user.setProvider(provider);
-        userRepository.save(user);
-
         // Add todos for the user
         Todo todo1 = new Todo();
         todo1.setTitle("Task 1");
@@ -130,7 +124,7 @@ class TodoServiceTest {
         TodoDTO todoDTO = new TodoDTO();
         todoDTO.setId(todo1.getId());
         todoDTO.setContent("ddd");
-        todoService.updateTodo(todoDTO);
+        todoService.updateTodo(todoDTO,email,provider);
 
         // Test fetching todos
         List<TodoDTO> todos = todoService.getTodosByUser(email, provider);
@@ -143,6 +137,8 @@ class TodoServiceTest {
     void testUpdateTodo_ShouldThrowException_WhenTodoNotFound() {
         // Given
         long invalidId = 999L;
+        String email = "user@example.com";
+        String provider = "google";
 
         TodoDTO todoDTO = new TodoDTO();
         todoDTO.setId(invalidId);
@@ -150,7 +146,7 @@ class TodoServiceTest {
 
         // When & Then
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> todoService.updateTodo(todoDTO));
+                () -> todoService.updateTodo(todoDTO,email,provider));
 
         assertEquals("Todo item not found with id: 999", exception.getMessage());
     }
@@ -159,13 +155,6 @@ class TodoServiceTest {
     void testDelete() {
         String email = "user@example.com";
         String provider = "google";
-
-        // Setup test user
-        User user = new User();
-        user.setUsername("TestUser");
-        user.setEmail(email);
-        user.setProvider(provider);
-        userRepository.save(user);
 
         // Add todos for the user
         Todo todo1 = new Todo();
@@ -178,7 +167,7 @@ class TodoServiceTest {
         todo2.setUser(user);
         todoRepository.save(todo2);
 
-        todoService.deleteTodo(todo1.getId());
+        todoService.deleteTodo(todo1.getId(),email,provider);
 
         // Test fetching todos
         List<TodoDTO> todos = todoService.getTodosByUser(email, provider);
@@ -192,10 +181,12 @@ class TodoServiceTest {
     void testDeleteTodo_ShouldThrowException_WhenTodoNotFound() {
         // Given
         long invalidId = 999L;
+        String email = "user@example.com";
+        String provider = "google";
 
         // When & Then
         Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> todoService.deleteTodo(invalidId));
+                () -> todoService.deleteTodo(invalidId,email,provider));
 
         assertEquals("Todo item not found with id: 999", exception.getMessage());
     }
