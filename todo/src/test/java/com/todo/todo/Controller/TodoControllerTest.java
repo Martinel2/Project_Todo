@@ -55,14 +55,19 @@ public class TodoControllerTest {
 
     @Test
     void testUpdateTodo() throws Exception {
-        doNothing().when(todoService).updateTodo(any(TodoDTO.class));  // Mock the service method
+        String email = "test@example.com";
+        String provider = "google";
+
+        doNothing().when(todoService).updateTodo(any(TodoDTO.class),anyString(),anyString());  // Mock the service method
 
         // When & Then
         mockMvc.perform(post("/api/todos/update")
+                        .param("email", email)
+                        .param("provider", provider)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"id\":1,\"\":\"Updated Todo\"}"))
+                        .content("{\"id\":\"" + 1L + "\",\"content\":\"" + "Updated Content" + "\"}"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Todo item successfully updated"));
+                .andExpect(jsonPath("$.message").value("업데이트 완료"));
     }
 
     @Test
@@ -81,14 +86,14 @@ public class TodoControllerTest {
 
     @Test
     void testDeleteTodo() throws Exception {
-        doNothing().when(todoService).deleteTodo(any(Long.class));  // Mock the service method
+        doNothing().when(todoService).deleteTodo(any(Long.class),anyString(),anyString());  // Mock the service method
 
         // When & Then
         mockMvc.perform(post("/api/todos/delete")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"id\":1}"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Todo item successfully deleted"));
+                .andExpect(jsonPath("$.message").value("삭제 완료"));
     }
 
 

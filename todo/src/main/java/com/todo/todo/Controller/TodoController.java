@@ -3,6 +3,8 @@ package com.todo.todo.Controller;
 import com.todo.todo.Dto.TodoCreateDTO;
 import com.todo.todo.Dto.TodoDTO;
 import com.todo.todo.Entity.Todo;
+import com.todo.todo.Result.ResultCode;
+import com.todo.todo.Result.ResultResponse;
 import com.todo.todo.Service.TodoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +32,25 @@ public class TodoController {
     }
 
     @PostMapping("/update")
-    public ResponseEntity<String> updateTodo(@RequestBody TodoDTO todoDTO) {
-        todoService.updateTodo(todoDTO);
-        return ResponseEntity.ok("Todo item successfully updated");  // 성공 시 OK 응답
+    public ResponseEntity<ResultResponse> updateTodo(@RequestBody TodoDTO todoDTO,
+                                             @RequestParam String email,
+                                             @RequestParam String provider) {
+        todoService.updateTodo(todoDTO, email, provider);
+
+        ResultResponse result = ResultResponse.of(ResultCode.UPDATE_SUCCESS, true);
+        return new ResponseEntity<>(result, HttpStatus.valueOf(result.getStatus()));
+    }
+
+    // ✅ 할 일 삭제 (email, provider 정보 필요)
+    @PostMapping("/delete")
+    public ResponseEntity<ResultResponse> deleteTodo(@RequestBody Map<String, Object> request) {
+        Long id = ((Number) request.get("id")).longValue();
+        String email = (String) request.get("email");
+        String provider = (String) request.get("provider");
+
+        todoService.deleteTodo(id, email, provider);
+        ResultResponse result = ResultResponse.of(ResultCode.DELETE_SUCCESS, true);
+        return new ResponseEntity<>(result, HttpStatus.valueOf(result.getStatus()));
     }
 
     @GetMapping("/user")
@@ -42,13 +60,6 @@ public class TodoController {
         return ResponseEntity.ok(todos);
     }
 
-    @PostMapping("/delete")
-    public ResponseEntity<String> deleteTodo(@RequestBody Map<String, Long> request) {
-        Long id = request.get("id");  // id만 받기
-        todoService.deleteTodo(id);   // 삭제 실패 시 예외 발생
-
-        return ResponseEntity.ok("Todo item successfully deleted");  // 성공 시 OK 응답
-    }
 
 
 

@@ -3,6 +3,7 @@ package com.todo.todo.Config;
 import com.todo.todo.Filter.JwtAuthenticationFilter;
 import com.todo.todo.Handler.OAuth2SuccessHandler;
 import com.todo.todo.Service.OAuth2Service;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -42,10 +43,15 @@ public class SpringSecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable) // 기본 인증 로그인 비활성화
                 .formLogin(AbstractHttpConfigurer::disable) // 기본 login form 비활성화
                 .logout(AbstractHttpConfigurer::disable) // 기본 logout 비활성화
-                .authorizeHttpRequests((requests) -> requests
-                        .anyRequest().permitAll())
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()
+                )
                 .exceptionHandling(ex -> ex
-                        .accessDeniedPage("/") // 접근 거부 페이지 설정
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                            response.setContentType("application/json");
+                            response.getWriter().write("You do not have permission to this todo.");
+                        })
                 )
                 .formLogin(formLogin -> formLogin.disable())
 

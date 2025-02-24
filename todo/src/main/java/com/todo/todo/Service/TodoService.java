@@ -6,8 +6,10 @@ import com.todo.todo.Entity.Todo;
 import com.todo.todo.Entity.User;
 import com.todo.todo.Repository.TodoRepository;
 import com.todo.todo.Repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,20 +39,32 @@ public class TodoService {
         return todoRepository.save(todo);
     }
 
-    public void updateTodo(TodoDTO todoDTO) throws IllegalArgumentException{
+    // ✅ Todo 수정 (권한 확인 추가)
+    public void updateTodo(TodoDTO todoDTO, String email, String provider) {
+        User user = userRepository.findUserByEmailAndProvider(email,provider)
+                .orElseThrow(() -> new EntityNotFoundException("Invalid Access"));
+
         Todo todo = todoRepository.findById(todoDTO.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Todo item not found with id: " + todoDTO.getId()));
 
+        if (!todo.getUser().getId().equals(user.getId())) {
+            throw new AccessDeniedException("You do not have permission to update this todo.");
+        }
+
         todo.setTitle(todoDTO.getContent());
-        todoRepository.save(todo);  // 예외 발생 시 컨트롤러에서 처리
+        todoRepository.save(todo);
     }
 
-
-    public void deleteTodo(long id) throws IllegalArgumentException{
+    // ✅ Todo 삭제 (권한 확인 추가)
+    public void deleteTodo(Long id, String email, String provider) {
         Todo todo = todoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Todo item not found with id: " + id));
 
-        todoRepository.delete(todo);  // Todo 삭제
+        if (!todo.getUser().getEmail().equals(email) || !todo.getUser().getProvider().equals(provider)) {
+            throw new AccessDeniedException("You do not have permission to delete this todo.");
+        }
+
+        todoRepository.delete(todo);
     }
 
 
