@@ -6,9 +6,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.todo.todo.Entity.User;
 import com.todo.todo.Util.JwtUtil;
 import com.todo.todo.Repository.UserRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -16,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -31,6 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @WebMvcTest(AuthController.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ActiveProfiles("test")
 public class AuthControllerTest {
 
     private MockMvc mockMvc;
@@ -45,12 +46,69 @@ public class AuthControllerTest {
     private AuthController authController;
 
     private AutoCloseable mockStatic;
+
+    private DecodedJWT mockJwt;
+
     @Configuration
     static class JwtUtilTestConfig {
         @Bean
         public JwtUtil jwtUtil() {
             return new JwtUtil();  // JwtUtil을 빈으로 등록
         }
+    }
+
+    @BeforeAll
+    void setup(){
+        String email = "test@example.com";
+
+        // DecodedJWT Mock 객체 생성
+        mockJwt = mock(DecodedJWT.class);
+        when(mockJwt.getClaim("sub")).thenReturn(new Claim() {
+            @Override
+            public boolean isNull() {
+                return false;
+            }
+            @Override
+            public Boolean asBoolean() {
+                return null;
+            }
+            @Override
+            public Integer asInt() {
+                return null;
+            }
+            @Override
+            public Long asLong() {
+                return null;
+            }
+            @Override
+            public Double asDouble() {
+                return null;
+            }
+            @Override
+            public String asString() {
+                return email;  // 존재하지 않는 이메일을 반환
+            }
+            @Override
+            public Date asDate() {
+                return null;
+            }
+            @Override
+            public <T> T[] asArray(Class<T> tClazz) throws JWTDecodeException {
+                return null;
+            }
+            @Override
+            public <T> List<T> asList(Class<T> tClazz) throws JWTDecodeException {
+                return null;
+            }
+            @Override
+            public Map<String, Object> asMap() throws JWTDecodeException {
+                return null;
+            }
+            @Override
+            public <T> T as(Class<T> tClazz) throws JWTDecodeException {
+                return null;
+            }
+        });
     }
 
     @BeforeEach
@@ -103,65 +161,6 @@ public class AuthControllerTest {
         user.setUsername("testUser");
         user.setProvider("local");
 
-        // DecodedJWT Mock 객체 생성
-        DecodedJWT mockJwt = mock(DecodedJWT.class);
-        when(mockJwt.getClaim("sub")).thenReturn(new Claim() {
-            @Override
-            public boolean isNull() {
-                return false;
-            }
-
-            @Override
-            public Boolean asBoolean() {
-                return null;
-            }
-
-            @Override
-            public Integer asInt() {
-                return null;
-            }
-
-            @Override
-            public Long asLong() {
-                return null;
-            }
-
-            @Override
-            public Double asDouble() {
-                return null;
-            }
-
-            @Override
-            public String asString() {
-                return email;  // 존재하지 않는 이메일을 반환
-            }
-
-            @Override
-            public Date asDate() {
-                return null;
-            }
-
-            @Override
-            public <T> T[] asArray(Class<T> tClazz) throws JWTDecodeException {
-                return null;
-            }
-
-            @Override
-            public <T> List<T> asList(Class<T> tClazz) throws JWTDecodeException {
-                return null;
-            }
-
-            @Override
-            public Map<String, Object> asMap() throws JWTDecodeException {
-                return null;
-            }
-
-            @Override
-            public <T> T as(Class<T> tClazz) throws JWTDecodeException {
-                return null;
-            }
-        });
-
         // jwtUtil.verifyToken(token)이 mockJwt를 반환하도록 설정
         when(jwtUtil.verifyToken(token)).thenReturn(mockJwt);
         when(mockJwt.getSubject()).thenReturn(email);
@@ -180,65 +179,6 @@ public class AuthControllerTest {
     public void testGetProfile_Failure_UserNotFound() throws Exception {
         String token = "invalid-token";
         String email = "nonexistent@example.com";
-
-        // DecodedJWT Mock 객체 생성
-        DecodedJWT mockJwt = mock(DecodedJWT.class);
-        when(mockJwt.getClaim("sub")).thenReturn(new Claim() {
-            @Override
-            public boolean isNull() {
-                return false;
-            }
-
-            @Override
-            public Boolean asBoolean() {
-                return null;
-            }
-
-            @Override
-            public Integer asInt() {
-                return null;
-            }
-
-            @Override
-            public Long asLong() {
-                return null;
-            }
-
-            @Override
-            public Double asDouble() {
-                return null;
-            }
-
-            @Override
-            public String asString() {
-                return email;  // 존재하지 않는 이메일을 반환
-            }
-
-            @Override
-            public Date asDate() {
-                return null;
-            }
-
-            @Override
-            public <T> T[] asArray(Class<T> tClazz) throws JWTDecodeException {
-                return null;
-            }
-
-            @Override
-            public <T> List<T> asList(Class<T> tClazz) throws JWTDecodeException {
-                return null;
-            }
-
-            @Override
-            public Map<String, Object> asMap() throws JWTDecodeException {
-                return null;
-            }
-
-            @Override
-            public <T> T as(Class<T> tClazz) throws JWTDecodeException {
-                return null;
-            }
-        });
 
         // jwtUtil.verifyToken(token)이 mockJwt를 반환하도록 설정
         when(jwtUtil.verifyToken(token)).thenReturn(mockJwt);

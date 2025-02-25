@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -19,8 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
+@ActiveProfiles("test")
 public class TodoControllerTest {
 
     private MockMvc mockMvc;
@@ -73,13 +74,17 @@ public class TodoControllerTest {
     @Test
     void testGetTodos() throws Exception {
         // Given
+        String email = "test@example.com";
+        String provider = "google";
+
+
         List<TodoDTO> todos = Arrays.asList(new TodoDTO(1L, "Test Todo"));
         when(todoService.getTodosByUser(anyString(), anyString())).thenReturn(todos);
 
         // When & Then
         mockMvc.perform(get("/api/todos/user")
-                        .param("email", "test@example.com")
-                        .param("provider", "google"))
+                        .param("email", email)
+                        .param("provider", provider))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].content").value("Test Todo"));
     }

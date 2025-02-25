@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Collections;
 import java.util.Map;
@@ -19,6 +20,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
+@ActiveProfiles("test")
 public class OAuth2ServiceUnitTest {
 
     @Mock  // ✅ @InjectMocks 제거 후 @Mock 사용

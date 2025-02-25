@@ -8,13 +8,15 @@ import com.todo.todo.Repository.TodoRepository;
 import com.todo.todo.Repository.UserRepository;
 import com.todo.todo.Service.TodoService;
 import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -28,6 +30,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ActiveProfiles("test")
 class TodoControllerExceptionTest {
 
     @Autowired
@@ -50,20 +54,25 @@ class TodoControllerExceptionTest {
     private User user2;
     private Todo todo;
 
-    @BeforeEach
+    @BeforeAll
     void setUp() {
         todoDTO = new TodoDTO();
         todoDTO.setContent("Updated Todo");
+
+        String userName = "testUser";
+        String email = "test@example.com";
+        String provider = "google";
+
+        user = new User();
+        user.setUsername(userName);
+        user.setEmail(email);
+        user.setProvider(provider);
+        user = userRepository.save(user);
     }
 
     // 1. Todo 업데이트 실패 예외 테스트 (존재하지 않는 Todo ID)
     @Test
     void testUpdateTodoNotFound() throws Exception {
-        user = new User();
-        user.setUsername("TestUser");
-        user.setEmail("test@example.com");
-        user.setProvider("google");
-        user = userRepository.saveAndFlush(user); // 저장 후 ID 자동 생성됨
 
         todoDTO.setId(1L);
         doThrow(new IllegalArgumentException("Todo item not found with id: 1"))
@@ -81,12 +90,6 @@ class TodoControllerExceptionTest {
     @Test
     void updateTodo_Fail_AccessDenied() throws Exception {
         // Given
-        user = new User();
-        user.setUsername("TestUser");
-        user.setEmail("test@example.com");
-        user.setProvider("google");
-        user = userRepository.saveAndFlush(user); // 저장 후 ID 자동 생성됨
-
         user2 = new User();
         user2.setUsername("TestUser2");
         user2.setEmail("test2@example.com");
@@ -132,12 +135,6 @@ class TodoControllerExceptionTest {
     @Test
     void deleteTodo_Fail_AccessDenied() throws Exception {
         // Given
-        user = new User();
-        user.setUsername("TestUser");
-        user.setEmail("test@example.com");
-        user.setProvider("google");
-        user = userRepository.saveAndFlush(user); // 저장 후 ID 자동 생성됨
-
         user2 = new User();
         user2.setUsername("TestUser2");
         user2.setEmail("test2@example.com");

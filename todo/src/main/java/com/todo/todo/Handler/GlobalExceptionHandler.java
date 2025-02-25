@@ -34,8 +34,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     protected ResponseEntity<ErrorResponse> handleEntityNotFoundException(EntityNotFoundException e) {
-        final ErrorResponse response = ErrorResponse.of(NOT_EXIST, e.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        final ErrorResponse response = ErrorResponse.of(INVALID_INPUT_VALUE, e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler

@@ -30,7 +30,7 @@ public class TodoService {
 
     public Todo createTodo(TodoCreateDTO todoCreateDTO) {
         //NullPointerException은 예상치못한 예외에서 사용하는 것
-        User user = userRepository.findUserByEmailAndProvider(todoCreateDTO.getEmail(), todoCreateDTO.getProvider())
+        User user = userRepository.findByEmailAndProvider(todoCreateDTO.getEmail(), todoCreateDTO.getProvider())
                 .orElseThrow(() -> new IllegalArgumentException("User not found with email: " + todoCreateDTO.getEmail()));
 
         Todo todo = new Todo();
@@ -41,7 +41,7 @@ public class TodoService {
 
     // ✅ Todo 수정 (권한 확인 추가)
     public void updateTodo(TodoDTO todoDTO, String email, String provider) {
-        User user = userRepository.findUserByEmailAndProvider(email,provider)
+        User user = userRepository.findByEmailAndProvider(email,provider)
                 .orElseThrow(() -> new EntityNotFoundException("Invalid Access"));
 
         Todo todo = todoRepository.findById(todoDTO.getId())
