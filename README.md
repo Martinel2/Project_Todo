@@ -30,7 +30,7 @@ chaGPT와 다음과 같이 일정을 짜서 수행
 
 ~~DAY 10-11: API 테스트 (Postman, RestAssured)~~
 
-DAY 12-13: 코드 리팩토링 (SOLID 원칙 적용)- 테스트 코드는 리팩토링을 대충 완료함.
+~~DAY 12-13: 코드 리팩토링 (SOLID 원칙 적용)~~
 
 ~~DAY 14: CI/CD 개념 학습 (GitHub Actions, Jenkins 기초) - CI 적용 완료!~~
 
