@@ -10,17 +10,19 @@ jobs:
   test:
     runs-on: ubuntu-latest
     permissions: write-all
+    # MySQL 서비스 설정은 주석 처리하여 H2를 사용할 예정
     services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: 0000  # root 비밀번호 설정
-          MYSQL_DATABASE: todo  # 사용할 데이터베이스
-          MYSQL_USER: testuser  # 일반 사용자 생성
-          MYSQL_PASSWORD: testpassworD  # 일반 사용자 비밀번호
-        ports:
-          - 3306:3306  # 포트 매핑
-        options: --health-cmd="mysqladmin ping -h 127.0.0.1 --silent" --health-interval=10s --health-timeout=5s --health-retries=3
+      # MySQL 부분 주석 처리
+      # mysql:
+      #   image: mysql:8.0
+      #   env:
+      #     MYSQL_ROOT_PASSWORD: 0000  # root 비밀번호 설정
+      #     MYSQL_DATABASE: todo  # 사용할 데이터베이스
+      #     MYSQL_USER: testuser  # 일반 사용자 생성
+      #     MYSQL_PASSWORD: testpassworD  # 일반 사용자 비밀번호
+      #   ports:
+      #     - 3306:3306  # 포트 매핑
+      #   options: --health-cmd="mysqladmin ping -h 127.0.0.1 --silent" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
     - uses: actions/checkout@v4
@@ -32,16 +34,17 @@ jobs:
         distribution: 'adopt'
        
     # 충분한 대기 시간을 추가하여 MySQL 서버가 준비되도록 함
-    - name: Wait for MySQL to be ready
-      run: sleep 10
+    # - name: Wait for MySQL to be ready
+    #  run: sleep 10
 
-    # MySQL 연결 확인
-    - name: Check MySQL connection
-      run: |
-        mysql -h 127.0.0.1 -u testuser -ptestpassworD  # 'mysql' 대신 '127.0.0.1' 사용
+    # MySQL 연결 확인 부분도 주석 처리 (H2를 사용하므로 MySQL 연결 확인을 할 필요 없음)
+    # - name: Check MySQL connection
+    #   run: |
+    #     mysql -h 127.0.0.1 -u testuser -ptestpassworD  # 'mysql' 대신 '127.0.0.1' 사용
 
-    - name: Check MySQL port 3306
-      run: telnet localhost 3306
+    # MySQL 포트 확인도 필요 없으므로 주석 처리
+    # - name: Check MySQL port 3306
+    #   run: telnet localhost 3306
 
     - name: Grant execute permission for gradlew
       run: cd todo && chmod +x gradlew
@@ -50,14 +53,15 @@ jobs:
       run: cd todo && ./gradlew dependencies
 
     - name: Run tests
+      # H2에 대한 설정을 환경 변수로 추가
       env:
-        DATABASE_URL: "jdbc:mysql://127.0.0.1:3306/todo?useSSL=false&allowPublicKeyRetrieval=true"
-        DB_USERNAME: "testuser"
-        DB_PASSWORD: "testpassworD"
+        SPRING_PROFILES_ACTIVE: "test"  # test 프로파일 사용
+        DATABASE_URL: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"  # H2 메모리 DB 사용
+        DB_USERNAME: "sa"  # H2 기본 사용자
+        DB_PASSWORD: "password"  # H2 기본 비밀번호는 빈 문자열
       run: |
         cd todo && ./gradlew test
 
-    
     - name: 테스트 결과를 PR에 코멘트로 등록하기
       uses: EnricoMi/publish-unit-test-result-action@v2
       if: always()
