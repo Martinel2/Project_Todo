@@ -37,7 +37,6 @@ jobs:
     # - name: Wait for MySQL to be ready
     #  run: sleep 10
 
-    # MySQL 연결 확인 부분도 주석 처리 (H2를 사용하므로 MySQL 연결 확인을 할 필요 없음)
     # - name: Check MySQL connection
     #   run: |
     #     mysql -h 127.0.0.1 -u testuser -ptestpassworD  # 'mysql' 대신 '127.0.0.1' 사용

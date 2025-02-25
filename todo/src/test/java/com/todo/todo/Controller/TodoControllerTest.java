@@ -32,6 +32,9 @@ public class TodoControllerTest {
     @InjectMocks
     private TodoController todoController;
 
+    private String email = "test@example.com";
+    private String provider = "google";
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -56,9 +59,6 @@ public class TodoControllerTest {
 
     @Test
     void testUpdateTodo() throws Exception {
-        String email = "test@example.com";
-        String provider = "google";
-
         doNothing().when(todoService).updateTodo(any(TodoDTO.class),anyString(),anyString());  // Mock the service method
 
         // When & Then
@@ -74,10 +74,6 @@ public class TodoControllerTest {
     @Test
     void testGetTodos() throws Exception {
         // Given
-        String email = "test@example.com";
-        String provider = "google";
-
-
         List<TodoDTO> todos = Arrays.asList(new TodoDTO(1L, "Test Todo"));
         when(todoService.getTodosByUser(anyString(), anyString())).thenReturn(todos);
 
