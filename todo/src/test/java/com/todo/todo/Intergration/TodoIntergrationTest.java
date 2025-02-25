@@ -9,7 +9,6 @@ import com.todo.todo.Repository.UserRepository;
 import com.todo.todo.Result.ResultCode;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +21,6 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-@Transactional
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // 랜덤 포트에서 서버 실행
@@ -52,16 +50,16 @@ class TodoIntergrationTest {
         user.setEmail(email);
         user.setProvider(provider);
         user = userRepository.save(user); // 저장 후 ID 자동 생성됨
-
-        todo = new Todo();
-        todo.setUser(user);
-        todo.setTitle("Task");
-        todo = todoRepository.save(todo); // 저장 후 즉시 반영
     }
 
     @BeforeEach
     void setPort() {
         RestAssured.port = port;
+
+        todo = new Todo();
+        todo.setUser(user);
+        todo.setTitle("Task");
+        todo = todoRepository.save(todo); // 저장 후 즉시 반영
     }
 
     @Test
