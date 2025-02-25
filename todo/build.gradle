@@ -2,8 +2,6 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.2'
 	id 'io.spring.dependency-management' version '1.1.7'
-
-
 }
 
 group = 'com.todo'
@@ -30,39 +28,41 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	//implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
+	implementation 'com.auth0:java-jwt:3.18.2'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-	implementation 'org.springframework.boot:spring-boot-starter-validation' // 입력 검증 (Validation)
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.auth0:java-jwt:3.18.2'
-
-	runtimeOnly 'com.h2database:h2' // 테스트용 H2 데이터베이스
-	runtimeOnly 'mysql:mysql-connector-java' // 실제 운영에서는 MySQL 사용
-
-	// ✅ 배포 & 운영 관련
-	implementation 'org.springframework.boot:spring-boot-starter-actuator' // 서버 상태 모니터링
-	implementation 'org.springframework.boot:spring-boot-starter-logging' // 로깅 (기본: SLF4J + Logback)
-	implementation 'org.springframework.boot:spring-boot-starter-mail' // 이메일 인증 (회원가입 시)
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 	implementation 'mysql:mysql-connector-java:8.0.33'
-
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.4'
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	// 테스트용 의존성
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 
+	testImplementation 'com.h2database:h2'
+	testImplementation 'io.rest-assured:rest-assured:5.1.1'
 
-	developmentOnly 'org.springframework.boot:spring-boot-devtools' // 핫 리로드
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()

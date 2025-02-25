@@ -39,7 +39,7 @@ public class OAuth2ServiceTest {
         mockUser.setEmail("newUser@example.com");
         mockUser.setProvider("google");
 
-        when(userRepository.findUserByEmailAndProvider(anyString(), anyString()))
+        when(userRepository.findByEmailAndProvider(anyString(), anyString()))
                 .thenReturn(Optional.empty()); // 새 유저라서 없음
 
         when(userRepository.save(any(User.class))).thenReturn(mockUser);
@@ -59,7 +59,7 @@ public class OAuth2ServiceTest {
         userProfile.setEmail("test@example.com");
         userProfile.setProvider("google");
 
-        when(userRepository.findUserByEmailAndProvider(anyString(), anyString()))
+        when(userRepository.findByEmailAndProvider(anyString(), anyString()))
                 .thenReturn(null); // ❌ Optional.empty()가 아닌 null 반환
 
         // When & Then

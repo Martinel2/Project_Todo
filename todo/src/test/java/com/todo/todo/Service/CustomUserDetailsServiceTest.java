@@ -1,20 +1,22 @@
 package com.todo.todo.Service;
 
-        import com.todo.todo.Entity.User;
-        import com.todo.todo.Repository.UserRepository;
-        import org.junit.jupiter.api.Test;
-        import org.junit.jupiter.api.extension.ExtendWith;
-        import org.mockito.InjectMocks;
-        import org.mockito.Mock;
-        import org.mockito.junit.jupiter.MockitoExtension;
-        import org.springframework.security.core.userdetails.UserDetails;
+import com.todo.todo.Entity.User;
+import com.todo.todo.Repository.UserRepository;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.test.context.ActiveProfiles;
 
-        import java.util.Optional;
+import java.util.Optional;
 
-        import static junit.framework.TestCase.assertEquals;
-        import static org.mockito.Mockito.when;
+import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@ActiveProfiles("test")
 public class CustomUserDetailsServiceTest {
 
     @InjectMocks
