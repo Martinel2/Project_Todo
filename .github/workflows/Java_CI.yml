@@ -59,9 +59,9 @@ jobs:
         DATABASE_URL: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"  # H2 메모리 DB 사용
         DB_USERNAME: "sa"  # H2 기본 사용자
         DB_PASSWORD: "password"  # H2 기본 비밀번호는 빈 문자열
-        run: |
-          cd todo
-          ./gradlew build
+      run: |
+        cd todo
+        ./gradlew build
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
