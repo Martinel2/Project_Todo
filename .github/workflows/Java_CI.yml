@@ -3,10 +3,10 @@ name: Java CI with Gradle
 on:
   push:
     branches: [ "develop" ]
-    tags: Ver*
+  #  tags: Ver*
   pull_request:
     branches: [ "develop" ]
-    tags: Ver*
+  #  tags: Ver*
 
 jobs:
   ci:
@@ -89,7 +89,7 @@ jobs:
         path: ./todo/build/libs
 
   #출처 https://min9yu98.tistory.com/18  
-  
+
     - name: Create .ssh directory and add EC2 host key
     # run은 명령을 실행하는데 사용한다.
     # ssh 연결 시 해당 호스트에 연결할 때 호스트키를 확인하고, 연결을 안전하게 유지할 수 있다.
