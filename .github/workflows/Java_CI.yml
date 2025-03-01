@@ -68,7 +68,7 @@ jobs:
 
     - name: Compress JAR before upload
       run: |
-        tar -czvf project.tar.gz -C todo/build/libs .
+        tar -czvf project.tar.gz -C todo/build/libs
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
