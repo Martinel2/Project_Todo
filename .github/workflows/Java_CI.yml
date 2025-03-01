@@ -8,7 +8,7 @@ on:
     branches: [ "develop" ]
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
     permissions: write-all
     # MySQL 서비스 설정은 주석 처리하여 H2를 사용할 예정
@@ -67,6 +67,18 @@ jobs:
       if: always()
       with:
         files: '**/build/test-results/test/TEST-*.xml'
+  cd:
+    runs-on: ubuntu-latest
+    needs: ci # ➜ ci가 성공해야 cd 실행
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'adopt'
 
     - name: Build the application
       run: |
