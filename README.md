@@ -39,7 +39,9 @@ chaGPT와 다음과 같이 일정을 짜서 수행
 ## ✅ 3주차 (배포 및 운영 경험 쌓기)
 ### 🎯 목표: 실제 배포 경험 & 운영 관리
 
-DAY 15-16: AWS, Docker 기본 개념 학습
+~~DAY 15-16: AWS, Docker 기본 개념 학습~~
+
+- ++2025/3/1)AWS EC2 인스턴스를 생성하고 Github Action에 CD작업 추가
 
 DAY 17-18: Docker로 프로젝트 컨테이너화 + MySQL 연동
 
