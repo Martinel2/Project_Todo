@@ -86,11 +86,6 @@ jobs:
       with:
         name: build-artifact
         path: ./todo/build/libs
-
-    - name: Debug SSH Key
-      run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64
-
     
     - name: Deploy to EC2
       uses: appleboy/scp-action@master
