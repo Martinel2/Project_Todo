@@ -66,10 +66,6 @@ jobs:
         cd todo
         ./gradlew build
 
-    - name: Compress JAR before upload
-      run: |
-        tar -czvf project.tar.gz -C todo/build/libs
-
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
       with:
@@ -111,9 +107,14 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
         chmod 600 private_key.pem
 
-    - name: Upload compressed JAR to EC2
+    - name: Check existing JAR
       run: |
-        scp -i private_key.pem project.tar.gz ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/
+        ssh -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "ls /home/${{ secrets.EC2_USER }}/*.jar" || echo "No existing file"
+
+    - name: Upload only if changed
+      run: |
+        scp -i private_key.pem -C todo/build/libs/*.jar ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/
+  
 
     - name: Deploy to EC2 and build
       uses: appleboy/ssh-action@master
