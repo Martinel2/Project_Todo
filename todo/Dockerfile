@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the .jar file into the container's /app directory
-COPY ./build/libs/*.jar /app/
+COPY ./build/libs/*.jar /app/libs/
 
 # Set entrypoint to run the app
 ENTRYPOINT ["java", "-jar", "/app/*.jar"]
