@@ -1,15 +1,11 @@
-# 1. OpenJDK 17을 베이스 이미지로 사용
+# Base image
 FROM openjdk:17-jdk-slim
 
-# 2. 작업 디렉토리 설정
+# Set working directory inside the container
 WORKDIR /app
 
-# 3. JAR 파일 복사
-COPY ./build/libs/*.jar app.jar
+# Copy the .jar file into the container's /app directory
+COPY ./build/libs/*.jar /app/
 
-# 4. 포트 8080 열기
-EXPOSE 8080
-
-# 5. 애플리케이션 실행 명령어
-CMD ["java", "-jar", "app.jar"]
-
+# Set entrypoint to run the app
+ENTRYPOINT ["java", "-jar", "/app/*.jar"]
