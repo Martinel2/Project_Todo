@@ -121,11 +121,11 @@ jobs:
       run: |
         ssh -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "mkdir -p /home/${{ secrets.EC2_USER }}/project"
 
+    # rsync로 해당 이름을 가진 파일은 제외
+    # 변경된 파일이 있으면 업로드 하기    
     - name: Upload project files to EC2
       run: |
-        # rsync로 해당 이름을 가진 파일은 제외
         rsync -avz --progress --exclude 'node_modules' \
-        # 변경된 파일이 있으면 업로드 하기
         -e "ssh -i private_key.pem" ./todo/ \
         ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/project/
 
