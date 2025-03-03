@@ -107,16 +107,20 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
         chmod 600 private_key.pem
 
-    - name: Check existing JAR
-      run: |
-        ssh -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "ls /home/${{ secrets.EC2_USER }}/*.jar" || echo "No existing file"
+  #  - name: Check existing JAR
+  #    run: |
+  #      ssh -i private_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "ls /home/${{ secrets.EC2_USER }}/*.jar" || echo "No existing file"
 
-    - name: Upload only if changed
+    # EC2로 JAR 파일 업로드 (변경된 경우만)
+    #- name: Upload folder to EC2
+    #  run: |
+    #    scp -i private_key.pem -r todo/build/libs/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/
+    
+    - name: Upload project folder to EC2
       run: |
-        scp -i private_key.pem -C todo/build/libs/*.jar ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/
+        scp -i private_key.pem -r todo/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/project/
   
-
-    - name: Deploy to EC2 and build
+    - name: Deploy to EC2 and build Docker image
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.EC2_HOST }}
@@ -124,9 +128,32 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd /home/${{ secrets.EC2_USER }}/project
+          
+          # 기존 컨테이너 중지 및 삭제
+          docker stop backend-container || true
+          docker rm backend-container || true
+          
+          # 최신 코드 가져오기
           git pull origin develop
-          ./gradlew build
-          nohup java -jar build/libs/*.jar > /home/${{ secrets.EC2_USER }}/log/app_log.out 2>&1 &
+          
+          # Docker 이미지 빌드
+          docker build -t todo .
+          
+          # 컨테이너 실행
+          docker run -d -p 8080:8080 --name backend-container todo
+  
+
+    #- name: Deploy to EC2 and build
+    #  uses: appleboy/ssh-action@master
+    #  with:
+    #    host: ${{ secrets.EC2_HOST }}
+    #    username: ${{ secrets.EC2_USER }}
+    #    key: ${{ secrets.SSH_PRIVATE_KEY }}
+    #    script: |
+    #      cd /home/${{ secrets.EC2_USER }}/project
+    #      git pull origin develop
+    #      ./gradlew build
+    #      nohup java -jar build/libs/*.jar > /home/${{ secrets.EC2_USER }}/log/app_log.out 2>&1 &
 
     - name: Remove private key file
       run: rm -f private_key.pem
