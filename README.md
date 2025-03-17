@@ -43,10 +43,12 @@ chaGPT와 다음과 같이 일정을 짜서 수행
 
 - ++2025/3/1)AWS EC2 인스턴스를 생성하고 Github Action에 CD작업 추가
 
-DAY 17-18: Docker로 프로젝트 컨테이너화 + MySQL 연동
+~~DAY 17-18: Docker로 프로젝트 컨테이너화 + MySQL 연동~~
 
-DAY 19-20: AWS EC2에 배포 + Nginx 설정
-
+~~DAY 19-20: AWS EC2에 배포 + Nginx 설정~~
+- ++2025/3/11) Docker compose를 통해 같은 네트워크에 MySQL,Spring,Nginx 컨테이너를 올림
+- ++2025/3/16) Nginx reverse proxy 설정 및 Oauth가 배포 후에도 동작하도록 함
+   
 DAY 21: 실제 배포 테스트 (Postman으로 API 테스트)
 
 ✅ 결과물: 실제 서버에 배포된 API 서비스
